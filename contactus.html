@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Fi-Tech IT Solutions</title>
+    <meta name="description" content="Get in touch with Fi-Tech IT Solutions for software development, enterprise biometrics, and IT consulting.">
+    <meta name="theme-color" content="#02090d">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='4' y='4' width='56' height='56' rx='14' fill='%23042027' stroke='%2300f2fe' stroke-width='5'/%3E%3Ctext x='32' y='42' font-family='Arial' font-weight='900' font-size='24' text-anchor='middle' fill='%2300f2fe'%3EFIS%3C/text%3E%3C/svg%3E">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap">
+
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: #02090d;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+        .bg-exact-hero {
+            background: radial-gradient(circle at 70% 45%, #053338 0%, #031e23 35%, #020d12 70%, #01080b 100%);
+        }
+        .btn-cyan-glow {
+            box-shadow: 0 0 25px rgba(0, 242, 254, 0.45);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .btn-cyan-glow:hover {
+            box-shadow: 0 0 35px rgba(0, 242, 254, 0.85);
+            transform: translateY(-2px);
+        }
+        .contact-card {
+            background: linear-gradient(135deg, rgba(3, 21, 26, 0.85) 0%, rgba(2, 13, 18, 0.95) 100%);
+            border: 1px solid rgba(0, 242, 254, 0.2);
+            transition: all 0.3s ease;
+        }
+        .contact-card:hover {
+            border-color: rgba(0, 242, 254, 0.6);
+            transform: translateY(-4px);
+            box-shadow: 0 15px 35px -10px rgba(0, 242, 254, 0.25);
+        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #02090d; }
+        ::-webkit-scrollbar-thumb { background: #0d2830; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #00f2fe; }
+    </style>
+</head>
+<body id="top" class="relative min-h-screen flex flex-col justify-between bg-exact-hero overflow-y-auto">
+    <div id="scrollProgress"></div>
+
+
+    <!-- Header / Navbar (same as the other pages) -->
+    <header class="w-full py-4 px-6 lg:px-14 flex items-center justify-between z-40 border-b border-cyan-950/40 backdrop-blur-xl fixed top-0 left-0 bg-[#02090d]/85">
+        <a href="index.html" class="flex items-center gap-3 cursor-pointer group">
+            <div class="w-10 h-10 rounded-xl border-2 border-cyan-400 bg-cyan-950/40 flex items-center justify-center font-black text-cyan-400 text-lg shadow-lg shadow-cyan-500/20 group-hover:scale-105 transition-transform">
+                FIS
+            </div>
+            <div class="flex flex-col">
+                <span class="text-lg font-black tracking-wider text-white leading-none">
+                    Fi-Tech <span class="text-cyan-400 font-bold">IT</span>
+                </span>
+                <span class="text-[10px] text-gray-400 tracking-[0.25em] uppercase font-semibold mt-0.5">SOLUTIONS</span>
+            </div>
+        </a>
+
+        <nav class="hidden lg:flex items-center gap-7 text-xs font-bold tracking-wider text-gray-300">
+            <a href="homepage.html" class="hover:text-cyan-400 transition-colors py-1">HOME</a>
+            <a href="homepage.html" class="hover:text-cyan-400 transition-colors py-1">ABOUT</a>
+            <a href="homepage.html" class="hover:text-cyan-400 transition-colors py-1">SERVICES</a>
+            <a href="faceex.html" class="hover:text-cyan-400 transition-colors py-1">PRODUCTS</a>
+            <a href="homepage.html" class="hover:text-cyan-400 transition-colors py-1">PORTFOLIO</a>
+            <a href="contactus.html" aria-current="page" class="text-white border-b-2 border-cyan-400 py-1">CONTACT</a>
+        </nav>
+
+        <div class="flex items-center gap-3">
+            <button id="mobileMenuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav" class="lg:hidden"><i class="fa-solid fa-bars"></i></button>
+            <button id="themeToggleBtn" type="button" aria-label="Toggle light or dark theme" onclick="toggleTheme()" title="Switch to Light Mode" class="w-9 h-9 rounded-full border border-cyan-500/40 bg-cyan-950/40 hover:bg-cyan-900/60 text-cyan-400 flex items-center justify-center transition-all shadow-md hover:scale-105 active:scale-95">
+                <i id="themeIcon" class="fa-solid fa-sun text-amber-400 text-sm"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile navigation -->
+    <div id="mobileNav" aria-hidden="true">
+        <a href="homepage.html">HOME</a>
+        <a href="homepage.html">ABOUT</a>
+        <a href="homepage.html">SERVICES</a>
+        <a href="faceex.html">PRODUCTS</a>
+        <a href="homepage.html">PORTFOLIO</a>
+        <a href="contactus.html" aria-current="page" class="text-cyan-400">CONTACT</a>
+    </div>
+
+    <main class="pt-32 pb-20 px-6 lg:px-14 max-w-[1280px] mx-auto w-full flex-1 flex flex-col justify-center relative z-10">
+        
+        <!-- Section Title Header -->
+        <div class="text-center max-w-3xl mx-auto mb-14">
+            <div class="inline-block px-3.5 py-1 rounded-full border border-cyan-500/30 bg-cyan-950/30 text-cyan-400 text-xs font-mono font-bold tracking-widest mb-4 uppercase">
+                ✦ REACH OUT TO US
+            </div>
+            <h1 class="text-4xl sm:text-6xl font-black text-white tracking-tight leading-tight">
+                Let's Build Something <br>
+                <span class="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-emerald-400 to-blue-500">
+                    Extraordinary Together
+                </span>
+            </h1>
+            <p class="text-gray-300 mt-4 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
+                Have a new project in mind, require a FaceEX demo, or need enterprise technical support? Send us a message and our engineering team will get back to you within 24 hours.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+            <!-- Address Card -->
+            <div class="contact-card rounded-3xl p-7 flex flex-col gap-4 backdrop-blur-xl">
+                <div class="w-12 h-12 rounded-2xl bg-cyan-950/80 border border-cyan-500/40 flex items-center justify-center text-cyan-400 text-xl shadow-lg">
+                    <i class="fa-solid fa-location-dot"></i>
+                </div>
+                <div>
+                    <h2 class="text-xs font-mono text-cyan-400 uppercase font-bold tracking-wider mb-1">Corporate HQ</h2>
+                    <p class="text-white font-bold text-lg mb-2">Pune, India</p>
+                    <p class="text-gray-300 text-sm leading-relaxed">
+                        A505/506 Sai Integrate, Bavdhan, Pune, Maharashtra - 411021
+                    </p>
+                </div>
+            </div>
+
+            <!-- Email Card -->
+            <div class="contact-card rounded-3xl p-7 flex flex-col gap-4 backdrop-blur-xl">
+                <div class="w-12 h-12 rounded-2xl bg-cyan-950/80 border border-cyan-500/40 flex items-center justify-center text-cyan-400 text-xl shadow-lg">
+                    <i class="fa-solid fa-envelope"></i>
+                </div>
+                <div>
+                    <h2 class="text-xs font-mono text-cyan-400 uppercase font-bold tracking-wider mb-1">Email Support</h2>
+                    <p class="text-white font-bold text-lg mb-2">Direct Inquiry</p>
+                    <a href="mailto:info@fitechit.in" class="text-gray-300 text-sm hover:text-cyan-400 transition-colors block leading-relaxed">
+                        info@fitechit.in
+                    </a>
+                    <span class="text-xs text-gray-500 mt-1 block">For sales and general inquiries</span>
+                </div>
+            </div>
+
+            <!-- Phone / Working Hours -->
+            <div class="contact-card rounded-3xl p-7 flex flex-col gap-4 backdrop-blur-xl">
+                <div class="w-12 h-12 rounded-2xl bg-emerald-950/80 border border-emerald-500/40 flex items-center justify-center text-emerald-400 text-xl shadow-lg">
+                    <i class="fa-solid fa-headset"></i>
+                </div>
+                <div>
+                    <h2 class="text-xs font-mono text-emerald-400 uppercase font-bold tracking-wider mb-1">Working Hours</h2>
+                    <p class="text-white font-bold text-lg mb-2">Mon - Sat: 9 AM - 7 PM</p>
+                    <p class="text-gray-300 text-sm leading-relaxed">
+                        Phone: +91 9370959455, +91 8459497965
+                    </p>
+                    <span class="text-xs text-emerald-400/80 mt-1 block">24/7 Support for Enterprise SLAs</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 bg-[#03151a]/90 border border-cyan-500/30 rounded-3xl p-8 lg:p-12 backdrop-blur-xl shadow-2xl">
+            
+            <!-- Left Info Panel -->
+            <div class="lg:col-span-5 flex flex-col justify-between space-y-6">
+                <div>
+                    <span class="text-xs font-mono text-cyan-400 uppercase font-bold tracking-widest">✦ DIRECT CONSULTATION</span>
+                    <h2 class="text-3xl font-extrabold text-white mt-2">Get Custom Engineering Guidance</h2>
+                    <p class="text-gray-300 text-sm leading-relaxed mt-3">
+                        Whether you need Aadhaar-enabled biometric technology, cloud software development, or custom enterprise platforms, our team is equipped to answer your questions.
+                    </p>
+                </div>
+
+                <div class="p-6 rounded-2xl bg-[#010d14]/90 border border-cyan-900/60 space-y-4">
+                    <div class="flex items-center gap-3 text-cyan-400 text-sm font-bold">
+                        <i class="fa-solid fa-circle-check text-emerald-400"></i>
+                        <span>End-to-End Enterprise Solutions</span>
+                    </div>
+                    <div class="flex items-center gap-3 text-cyan-400 text-sm font-bold">
+                        <i class="fa-solid fa-circle-check text-emerald-400"></i>
+                        <span>Dedicated Tech Support & SLAs</span>
+                    </div>
+                    <div class="flex items-center gap-3 text-cyan-400 text-sm font-bold">
+                        <i class="fa-solid fa-circle-check text-emerald-400"></i>
+                        <span>UIDAI & Government Certified Tech</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Interactive Contact Form -->
+            <div class="lg:col-span-7">
+                <form id="contactForm" class="space-y-4" novalidate>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label for="fullName" class="block text-xs font-mono text-cyan-400 uppercase font-bold mb-1.5">Full Name *</label>
+                            <input id="fullName" type="text" required placeholder="John Doe" class="w-full bg-[#010d14] border border-cyan-900 focus:border-cyan-400 rounded-xl px-4 py-3 text-sm text-white focus:outline-none transition-colors">
+                        </div>
+                        <div>
+                            <label for="emailAddr" class="block text-xs font-mono text-cyan-400 uppercase font-bold mb-1.5">Email Address *</label>
+                            <input id="emailAddr" type="email" required placeholder="john@company.com" class="w-full bg-[#010d14] border border-cyan-900 focus:border-cyan-400 rounded-xl px-4 py-3 text-sm text-white focus:outline-none transition-colors">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label for="phoneNum" class="block text-xs font-mono text-cyan-400 uppercase font-bold mb-1.5">Phone Number</label>
+                            <input id="phoneNum" type="tel" placeholder="Optional" class="w-full bg-[#010d14] border border-cyan-900 focus:border-cyan-400 rounded-xl px-4 py-3 text-sm text-white focus:outline-none transition-colors">
+                        </div>
+                        <div>
+                            <label for="serviceType" class="block text-xs font-mono text-cyan-400 uppercase font-bold mb-1.5">Interested Service</label>
+                            <select id="serviceType" class="w-full bg-[#010d14] border border-cyan-900 focus:border-cyan-400 rounded-xl px-4 py-3 text-sm text-white focus:outline-none transition-colors">
+                                <option value="faceex">FaceEX Attendance System</option>
+                                <option value="software">Custom Software Development</option>
+                                <option value="web-mobile">Web & Mobile App Development</option>
+                                <option value="cloud">Cloud & Infrastructure</option>
+                                <option value="other">General Inquiry</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="msgSubject" class="block text-xs font-mono text-cyan-400 uppercase font-bold mb-1.5">Subject *</label>
+                        <input id="msgSubject" type="text" required placeholder="Project Proposal / FaceEX Hardware Demo" class="w-full bg-[#010d14] border border-cyan-900 focus:border-cyan-400 rounded-xl px-4 py-3 text-sm text-white focus:outline-none transition-colors">
+                    </div>
+
+                    <div>
+                        <label for="msgBody" class="block text-xs font-mono text-cyan-400 uppercase font-bold mb-1.5">Your Message *</label>
+                        <textarea id="msgBody" rows="4" required placeholder="Please provide details about your requirements or project timeline..." class="w-full bg-[#010d14] border border-cyan-900 focus:border-cyan-400 rounded-xl px-4 py-3 text-sm text-white focus:outline-none resize-none transition-colors"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full bg-gradient-to-r from-cyan-400 to-blue-600 hover:from-cyan-300 hover:to-blue-500 text-white font-extrabold uppercase py-4 rounded-xl text-xs tracking-widest btn-cyan-glow transition-all flex items-center justify-center gap-2">
+                        <span>Send Message</span>
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+
+                    <!-- Success Alert Message -->
+                    <div id="contactStatus" role="status" aria-live="polite" class="hidden p-4 rounded-xl bg-emerald-950/80 border border-emerald-500/50 text-emerald-400 text-xs text-center font-bold">
+                        <i class="fa-solid fa-envelope-circle-check mr-2"></i>
+                        <span id="contactStatusText"></span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer id="contact" class="site-footer relative z-10 w-full mt-8 border-t border-cyan-500/30 bg-[#010d14]/90 backdrop-blur-xl">
+    <div class="laser-divider"></div>
+
+    <div class="max-w-[1280px] mx-auto px-6 lg:px-14 pt-14 pb-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-10">
+
+            <!-- Brand -->
+            <div class="reveal-on-scroll lg:col-span-4 space-y-5">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl border-2 border-cyan-400 bg-cyan-950/40 flex items-center justify-center font-black text-cyan-400 text-lg shadow-lg shadow-cyan-500/20">FIS</div>
+                    <div class="flex flex-col">
+                        <span class="footer-brand text-lg font-black tracking-wider text-white leading-none">Fi-Tech <span class="text-cyan-400 font-bold">IT</span></span>
+                        <span class="text-[10px] text-gray-400 tracking-[0.25em] uppercase font-semibold mt-0.5">SOLUTIONS</span>
+                    </div>
+                </div>
+                <p class="text-gray-400 text-sm leading-relaxed max-w-sm">
+                    Robust software, precision biometrics, cloud systems and real estate digital engines for global enterprises and government.
+                </p>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="reveal-on-scroll lg:col-span-2 space-y-4" style="transition-delay:120ms;">
+                <h4 class="footer-heading text-xs font-extrabold tracking-[0.2em] uppercase text-white">Quick Links</h4>
+                <ul class="space-y-2.5 text-sm text-gray-400">
+                    <li><a href="homepage.html" class="footer-link hover:text-cyan-400 transition-colors">Home</a></li>
+                    <li><a href="homepage.html" class="footer-link hover:text-cyan-400 transition-colors">About</a></li>
+                    <li><a href="homepage.html" class="footer-link hover:text-cyan-400 transition-colors">Services</a></li>
+                    <li><a href="faceex.html" class="footer-link hover:text-cyan-400 transition-colors">Products</a></li>
+                    <li><a href="homepage.html" class="footer-link hover:text-cyan-400 transition-colors">Portfolio</a></li>
+                    <li><a href="contactus.html" class="footer-link hover:text-cyan-400 transition-colors">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Services -->
+            <div class="reveal-on-scroll lg:col-span-3 space-y-4" style="transition-delay:240ms;">
+                <h4 class="footer-heading text-xs font-extrabold tracking-[0.2em] uppercase text-white">Services</h4>
+                <ul class="space-y-2.5 text-sm text-gray-400">
+                    <li><a href="homepage.html" class="footer-link hover:text-cyan-400 transition-colors">Custom Software Development</a></li>
+                    <li><a href="homepage.html" class="footer-link hover:text-cyan-400 transition-colors">Web &amp; Mobile App Development</a></li>
+                    <li><a href="homepage.html" class="footer-link hover:text-cyan-400 transition-colors">UI/UX Design</a></li>
+                    <li><a href="homepage.html" class="footer-link hover:text-cyan-400 transition-colors">E-commerce Solutions</a></li>
+                    <li><a href="homepage.html" class="footer-link hover:text-cyan-400 transition-colors">Cloud &amp; DevOps</a></li>
+                    <li><a href="homepage.html" class="footer-link hover:text-cyan-400 transition-colors">IT Consulting &amp; Support</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact -->
+            <div class="reveal-on-scroll lg:col-span-3 space-y-4" style="transition-delay:360ms;">
+                <h4 class="footer-heading text-xs font-extrabold tracking-[0.2em] uppercase text-white">Contact</h4>
+                <ul class="space-y-3 text-sm text-gray-400">
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-location-dot text-cyan-400 mt-1"></i><span>505/506 Sai Integrate, Beside Marigold Banquet Bavdhan, Pune - 411021</span></li>
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-envelope text-cyan-400 mt-1"></i><a href="mailto:info@fitechit.com" class="footer-link hover:text-cyan-400 transition-colors">info@fitechit.com</a></li>
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-phone text-cyan-400 mt-1"></i><span class="flex flex-wrap gap-x-3"><a href="tel:+919370959455" class="footer-link hover:text-cyan-400 transition-colors">+91 9370959455</a><a href="tel:+918459497965" class="footer-link hover:text-cyan-400 transition-colors">+91 8459497965</a></span></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Bottom bar -->
+        <div class="reveal-on-scroll mt-12 pt-6 border-t border-cyan-950/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-500">
+            <p>&copy; <span id="footerYear">2026</span> Fi-Tech IT Solutions. All rights reserved.</p>
+            <div class="flex items-center gap-5">
+                <a href="privacy-policy.html" class="footer-link hover:text-cyan-400 transition-colors">Privacy Policy</a>
+                <a href="terms-of-service.html" class="footer-link hover:text-cyan-400 transition-colors">Terms of Service</a>
+                <a href="#top" class="w-8 h-8 rounded-full border border-cyan-500/30 text-cyan-400 flex items-center justify-center hover:bg-cyan-400 hover:text-[#02090d] transition-all" aria-label="Back to top"><i class="fa-solid fa-arrow-up text-xs"></i></a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script>
+        /* This site has no server-side form handler, so the form opens the visitor's email app with the message
+           already written to the address shown on this page (info@fitechit.in). Nothing is claimed as "sent". */
+        (function () {
+            var form = document.getElementById('contactForm'); if (!form) return;
+            var TO = 'info@fitechit.in';
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                if (!form.checkValidity()) { form.reportValidity(); return; }
+                var v = function (id) { var el = document.getElementById(id); return el ? el.value.trim() : ''; };
+                var sel = document.getElementById('serviceType');
+                var svc = sel ? sel.options[sel.selectedIndex].text : '';
+                var body = v('msgBody') + '\n\n--\nName: ' + v('fullName') + '\nEmail: ' + v('emailAddr') +
+                    (v('phoneNum') ? '\nPhone: ' + v('phoneNum') : '') + '\nInterested in: ' + svc;
+                var url = 'mailto:' + TO + '?subject=' + encodeURIComponent(v('msgSubject')) + '&body=' + encodeURIComponent(body);
+                var st = document.getElementById('contactStatus'), tx = document.getElementById('contactStatusText');
+                tx.textContent = 'Your email app is opening with your message ready to send. If nothing opens, please write to ' + TO + '.';
+                st.classList.remove('hidden');
+                form.setAttribute('data-mailto', url);
+                window.location.href = url;
+            });
+        })();
+    </script>
+    <script src="js/site-common.js"></script>
+    <script src="js/legal-modal.js"></script>
+</body>
+</html>

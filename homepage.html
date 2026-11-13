@@ -1,0 +1,869 @@
+          <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fi-Tech IT Solutions | Digital Transformation &amp; Software Development</title>
+    <meta name="description" content="Your strategic partner in digital transformation. We build robust software, scalable web applications, and innovative IT infrastructure for enterprises and government clients.">
+    <meta property="og:title" content="Fi-Tech IT Solutions | Digital Transformation Partner">
+    <meta property="og:description" content="Building robust software and innovative IT infrastructure for high-profile clients and government agencies.">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Fi-Tech IT Solutions">
+    <meta name="theme-color" content="#02090d">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='4' y='4' width='56' height='56' rx='14' fill='%23042027' stroke='%2300f2fe' stroke-width='5'/%3E%3Ctext x='32' y='42' font-family='Arial' font-weight='900' font-size='24' text-anchor='middle' fill='%2300f2fe'%3EFIS%3C/text%3E%3C/svg%3E">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* FaceEX hero card: whole area is a link to faceex.html */
+        a.hv-link{display:flex;text-decoration:none;color:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:transform .35s ease,filter .35s ease}
+        a.hv-link:focus-visible{outline:2px solid #00f2fe;outline-offset:6px;border-radius:24px}
+        @media (hover:hover){a.hv-link:hover{transform:translateY(-4px) scale(1.015);filter:brightness(1.08) drop-shadow(0 0 18px rgba(0,242,254,.25))}}
+        a.hv-link:active{transform:scale(.995)}
+    </style>
+    <script>
+        /* Reveal animations only hide content when JS is running. If script.js fails to load/run, content stays visible. */
+        if ('IntersectionObserver' in window) document.documentElement.classList.add('js');
+        setTimeout(function () { if (!window.__fisReady) document.documentElement.classList.remove('js'); }, 3000);
+    </script>
+
+
+
+</head>
+<body class="relative min-h-screen flex flex-col justify-between bg-exact-hero torch-container overflow-y-auto">
+    <div id="scrollProgress"></div>
+
+    <!-- SVG Torch / Flashlight Spotlight Overlay -->
+    <svg id="torchSvg" class="pointer-events-none fixed inset-0 w-full h-full z-20" aria-hidden="true">
+        <defs>
+            <!-- Torch Beam Radial Gradient -->
+            <radialGradient id="torchSpotlight" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#00f2fe" stop-opacity="0.55"/>
+                <stop offset="35%" stop-color="#10b981" stop-opacity="0.30"/>
+                <stop offset="70%" stop-color="#03272c" stop-opacity="0.10"/>
+                <stop offset="100%" stop-color="#02090d" stop-opacity="0"/>
+            </radialGradient>
+
+            <!-- Glow Filter -->
+            <filter id="glowFilter" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur stdDeviation="15" result="blur" />
+                <feComposite in="SourceGraphic" in2="blur" operator="over" />
+            </filter>
+        </defs>
+
+        <!-- Dynamic Torch Beam Spotlight Circle -->
+        <circle id="torchCircle" cx="-500" cy="-500" r="220" fill="url(#torchSpotlight)" style="mix-blend-mode: screen;" />
+
+        <!-- Torch Center Laser Flare -->
+        <circle id="torchCenterGlow" cx="-500" cy="-500" r="14" fill="#00f2fe" filter="url(#glowFilter)" opacity="0.85" />
+    </svg>
+
+    <!-- Header / Navbar -->
+    <header class="w-full py-4 px-6 lg:px-14 flex items-center justify-between z-40 border-b border-cyan-950/40 backdrop-blur-xl fixed top-0 left-0 bg-[#02090d]/85">
+        
+        <!-- FIS Logo -->
+        <div class="flex items-center gap-3 cursor-pointer group">
+            <div class="w-10 h-10 rounded-xl border-2 border-cyan-400 bg-cyan-950/40 flex items-center justify-center font-black text-cyan-400 text-lg shadow-lg shadow-cyan-500/20 group-hover:scale-105 transition-transform">
+                FIS
+            </div>
+            <div class="flex flex-col">
+                <span class="text-lg font-black tracking-wider text-white leading-none">
+                    Fi-Tech <span class="text-cyan-400 font-bold">IT</span>
+                </span>
+                <span class="text-[10px] text-gray-400 tracking-[0.25em] uppercase font-semibold mt-0.5">SOLUTIONS</span>
+            </div>
+        </div>
+
+        <!-- Navigation Links -->
+        <nav class="hidden lg:flex items-center gap-7 text-xs font-bold tracking-wider text-gray-300">
+            <a href="#home" class="hover:text-cyan-400 transition-colors py-1 border-b-2 border-cyan-400 text-white">HOME</a>
+            <a href="#about" class="hover:text-cyan-400 transition-colors py-1">ABOUT</a>
+            <a href="#services" class="hover:text-cyan-400 transition-colors py-1">SERVICES</a>
+            <a href="faceex.html" class="hover:text-cyan-400 transition-colors py-1">PRODUCTS</a>
+            <a href="#portfolio" class="hover:text-cyan-400 transition-colors py-1">PORTFOLIO</a>
+            <a href="contactus.html" class="hover:text-cyan-400 transition-colors py-1">CONTACT</a>
+        </nav>
+
+        <!-- CTA Action Buttons -->
+        <div class="flex items-center gap-3">
+            <button id="mobileMenuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav" class="lg:hidden"><i class="fa-solid fa-bars"></i></button>
+            <button id="themeToggleBtn" type="button" aria-label="Toggle light or dark theme" onclick="toggleTheme()" title="Switch to Light Mode" class="w-9 h-9 rounded-full border border-cyan-500/40 bg-cyan-950/40 hover:bg-cyan-900/60 text-cyan-400 flex items-center justify-center transition-all shadow-md hover:scale-105 active:scale-95">
+                <i id="themeIcon" class="fa-solid fa-sun text-amber-400 text-sm"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile navigation -->
+    <div id="mobileNav" aria-hidden="true">
+        <a href="#home">HOME</a>
+        <a href="#about">ABOUT</a>
+        <a href="#services">SERVICES</a>
+        <a href="faceex.html">PRODUCTS</a>
+        <a href="#portfolio">PORTFOLIO</a>
+        <a href="#certifications">CERTIFICATIONS</a>
+        <a href="#process">PROCESS</a>
+        <a href="contactus.html">CONTACT</a>
+    </div>
+
+    <!-- Hero Main Section -->
+    <main id="home" class="pt-20 lg:pt-24 pb-4 px-6 lg:px-14 max-w-[1440px] mx-auto w-full flex-1 flex flex-col lg:flex-row items-center justify-between gap-4 relative z-10">
+        
+        <!-- Left Column: Copy & CTAs -->
+        <div class="w-full lg:w-[48%] flex flex-col gap-3.5 text-center lg:text-left">
+            
+            <!-- Top Tagline Badge -->
+            <div class="flex items-center justify-center lg:justify-start">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-cyan-500/40 bg-cyan-950/30 text-cyan-400 text-xs font-semibold tracking-wide">
+                    <span class="text-cyan-400 font-bold">+</span> NEXT-GEN ENTERPRISE & GOVERNMENT SOLUTIONS
+                </div>
+            </div>
+
+
+            <!-- Headline (Dark by default, revealed under SVG Torch spotlight) -->
+            <h1 id="heroHeadline" class="hero-headline text-3xl sm:text-5xl lg:text-[56px] font-black tracking-tight leading-[1.08] cursor-default select-none">
+                <span class="torch-word headline-dark">WE</span> 
+                <span class="torch-word headline-dark">BUILD</span> 
+                <span class="torch-word headline-dark">WHAT</span> <br>
+                <span class="torch-word headline-dark">MATTERS</span> 
+                <span class="torch-word headline-dark">MOST</span>
+            </h1>
+
+            <!-- Paragraph -->
+            <p class="text-gray-300 text-sm sm:text-base max-w-xl mx-auto lg:mx-0 font-normal leading-relaxed">
+                Turning your vision into digital reality. From concept to scale, Fi-Tech engineers robust software, precision biometrics, cloud systems, and real estate digital engines for global enterprises.
+            </p>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-wrap items-center justify-center lg:justify-start gap-3 pt-1">
+                <a href="#contact" class="bg-gradient-to-r from-cyan-400 to-blue-600 hover:from-cyan-300 hover:to-blue-500 text-white font-extrabold tracking-wider px-7 py-3 rounded-full text-xs uppercase btn-cyan-glow flex items-center gap-3">GET STARTED NOW</a>
+            </div>
+
+            <!-- Bottom Feature Indicators -->
+            <div class="pt-4 border-t border-cyan-950/60 flex flex-wrap items-center justify-center lg:justify-start gap-5 text-xs font-bold text-gray-300">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-check text-emerald-400 text-sm"></i>
+                    <span>AI & Biometric Core</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-check text-emerald-400 text-sm"></i>
+                    <span>99.99% Enterprise SLA</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-check text-emerald-400 text-sm"></i>
+                    <span>Govt Security Certified</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Column: FaceEX capture / verification visual (inline SVG, replaces the former 3D robot) -->
+        <a href="faceex.html" class="hv-wrap hv-link w-full lg:w-[52%] h-[430px] sm:h-[440px] lg:h-[480px] relative flex flex-col items-center justify-center z-10" aria-label="Open the FaceEX product page">
+<svg id="heroVisual" class="hv" viewBox="0 0 640 560" role="img" aria-label="FaceEX facial recognition: the face is captured, authenticated against Aadhaar data, logged as attendance and stored in the cloud" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+<defs>
+  <radialGradient id="fxGlow" cx="50%" cy="50%" r="50%"><stop offset="0" class="fxv-s-glow" stop-opacity=".5"/><stop offset=".65" class="fxv-s-glow" stop-opacity=".1"/><stop offset="1" class="fxv-s-glow" stop-opacity="0"/></radialGradient>
+  <linearGradient id="fxScan" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="fxv-s-scan" stop-opacity="0"/><stop offset="1" class="fxv-s-scan" stop-opacity=".55"/></linearGradient>
+  <linearGradient id="fxPanel" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="fxv-s-p1"/><stop offset="1" class="fxv-s-p2"/></linearGradient>
+  <!-- FaceEX device screen: fixed dark-display colours (the glass is always dark, in day mode too) -->
+  <linearGradient id="fxScanDev" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#00f2fe" stop-opacity="0"/><stop offset="1" stop-color="#00f2fe" stop-opacity=".55"/></linearGradient>
+  <linearGradient id="fxScreenBg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#06323c"/><stop offset=".55" stop-color="#031a21"/><stop offset="1" stop-color="#010b0f"/></linearGradient>
+  <radialGradient id="fxScreenGlow" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#00f2fe" stop-opacity=".2"/><stop offset="1" stop-color="#00f2fe" stop-opacity="0"/></radialGradient>
+  <clipPath id="fxScreenClip"><rect x="99.9" y="131.9" width="150.7" height="264.1" rx="2.5"/></clipPath>
+  <clipPath id="fxBandClip"><rect class="fxv-bandrect" x="-110" y="-135" width="220" height="56"/></clipPath>
+  <linearGradient id="fxAvatar" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2cc4d8"/><stop offset="1" stop-color="#0b6f86"/></linearGradient>
+</defs>
+<g class="hv-layer hv-l1"><ellipse cx="320" cy="290" rx="320" ry="260" fill="url(#fxGlow)"/>
+  <ellipse class="fxv-orbit" cx="175" cy="282" rx="165" ry="198"/>
+</g>
+<g class="hv-layer hv-l2">
+  <!-- Capture device: the real FaceEX terminal (images/faceex-device.webp); the face is rendered inside its screen -->
+  <g class="fxv-float a">
+  <image class="fxv-device" href="images/faceex-device.webp" x="55" y="34" width="240" height="490" preserveAspectRatio="xMidYMid meet"/>
+  <g class="fxv-screen" clip-path="url(#fxScreenClip)">
+  <rect x="99.9" y="131.9" width="150.7" height="264.1" fill="url(#fxScreenBg)"/>
+  <ellipse cx="175.2" cy="262" rx="78" ry="100" fill="url(#fxScreenGlow)"/>
+  <g class="fxv-head"><circle class="fxv-dot" cx="111" cy="146" r="2.4"/><text x="117" y="149" class="fxv-brand">FaceEX</text><text x="241" y="148.6" text-anchor="end" class="fxv-tag">LIVE CAPTURE</text></g>
+  <line class="fxv-sep" x1="108" y1="156" x2="242" y2="156"/>
+  <g transform="translate(175.2 262) scale(.6)">
+    <g transform="translate(0 -128) scale(.62) translate(-492 -288)"><path d="M430 300 C455 285 520 280 560 300 C585 315 598 340 592 385 C604 392 608 415 603 438 C600 462 588 480 580 485 C570 520 555 545 543 556 C543 575 548 590 565 598 L600 601 C640 603 680 640 680 680 L680 690 Q680 695 675 695 L308 695 Q303 695 303 690 C303 640 340 603 380 601 L415 598 C433 590 442 575 441 556 C430 545 415 520 408 485 C395 480 383 462 381 440 C379 420 384 405 394 408 C388 370 388 345 402 330 C412 318 424 316 430 300 Z" fill="url(#fxAvatar)"/>
+    <path d="M368 603 C410 645 570 650 612 603" fill="none" stroke="#e8fdff" stroke-width="8" stroke-linecap="round"/></g>
+    <g class="fxv-scan"><rect x="-122" y="-2" width="244" height="44" fill="url(#fxScanDev)" transform="translate(0 -44)"/><line x1="-122" y1="0" x2="122" y2="0"/></g>
+  </g>
+  <path class="fxv-brk" d="M109,184 V172 H121 M241,184 V172 H229 M109,340 V352 H121 M241,340 V352 H229"/>
+  <g class="fxv-status"><text class="fxv-st a" x="175.2" y="377" text-anchor="middle">SCANNING FACE…</text><text class="fxv-st b" x="175.2" y="377" text-anchor="middle">IDENTITY VERIFIED</text></g>
+  <path class="fxv-sheen" d="M99.9,131.9 H250.6 V196 L99.9,300Z"/>
+  <rect class="fxv-glass" x="100.3" y="132.3" width="149.9" height="263.3" rx="2.2"/>
+  </g>
+  </g>
+</g>
+<g class="hv-layer hv-l3"><g class="fxv-card c1" transform="translate(362 92)">
+  <rect class="fxv-card-bg" width="262" height="78" rx="14"/>
+  <rect class="fxv-card-hi" width="262" height="78" rx="14"/>
+  <g transform="translate(40 39.0)" class="fxv-ico"><rect x="-13" y="-8" width="26" height="18" rx="4"/><circle cx="0" cy="1" r="5"/><path d="M-6 -8 L-3 -13 H3 L6 -8"/></g>
+  <text class="fxv-ct" x="76" y="35.0">Face Capture</text>
+  <text class="fxv-cs" x="76" y="53.0">Camera captures the face</text>
+  <g class="fxv-state" transform="translate(240 39.0)">
+    <circle class="fxv-idle" r="8"/>
+    <circle class="fxv-spin" r="8" pathLength="100"/>
+    <g class="fxv-ok"><circle r="10"/><polyline points="-4,0 -1,3.5 5,-3.5"/></g>
+  </g>
+  <text class="fxv-step" x="14" y="20">01</text>
+</g><line class="fxv-conn k1" x1="402" y1="170" x2="402" y2="186"/><g class="fxv-card c2" transform="translate(362 186)">
+  <rect class="fxv-card-bg" width="262" height="78" rx="14"/>
+  <rect class="fxv-card-hi" width="262" height="78" rx="14"/>
+  <g transform="translate(40 39.0)" class="fxv-ico"><rect x="-14" y="-10" width="28" height="20" rx="3"/><circle cx="-6" cy="-2" r="3.2"/><path d="M-11 7 q5 -6 10 0"/><line x1="3" y1="-3" x2="10" y2="-3"/><line x1="3" y1="3" x2="10" y2="3"/></g>
+  <text class="fxv-ct" x="76" y="35.0">Aadhaar Authentication</text>
+  <text class="fxv-cs" x="76" y="53.0">UIDAI OKYC identity match</text>
+  <g class="fxv-state" transform="translate(240 39.0)">
+    <circle class="fxv-idle" r="8"/>
+    <circle class="fxv-spin" r="8" pathLength="100"/>
+    <g class="fxv-ok"><circle r="10"/><polyline points="-4,0 -1,3.5 5,-3.5"/></g>
+  </g>
+  <text class="fxv-step" x="14" y="20">02</text>
+</g><line class="fxv-conn k2" x1="402" y1="264" x2="402" y2="280"/><g class="fxv-card c3" transform="translate(362 280)">
+  <rect class="fxv-card-bg" width="262" height="78" rx="14"/>
+  <rect class="fxv-card-hi" width="262" height="78" rx="14"/>
+  <g transform="translate(40 39.0)" class="fxv-ico"><rect x="-12" y="-12" width="24" height="24" rx="4"/><line x1="-12" y1="-4" x2="12" y2="-4"/><polyline points="-6,4 -2,8 6,0"/></g>
+  <text class="fxv-ct" x="76" y="35.0">Attendance Logged</text>
+  <text class="fxv-cs" x="76" y="53.0">Recorded in real time</text>
+  <g class="fxv-state" transform="translate(240 39.0)">
+    <circle class="fxv-idle" r="8"/>
+    <circle class="fxv-spin" r="8" pathLength="100"/>
+    <g class="fxv-ok"><circle r="10"/><polyline points="-4,0 -1,3.5 5,-3.5"/></g>
+  </g>
+  <text class="fxv-step" x="14" y="20">03</text>
+</g><line class="fxv-conn k3" x1="402" y1="358" x2="402" y2="374"/><g class="fxv-card c4" transform="translate(362 374)">
+  <rect class="fxv-card-bg" width="262" height="78" rx="14"/>
+  <rect class="fxv-card-hi" width="262" height="78" rx="14"/>
+  <g transform="translate(40 39.0)" class="fxv-ico"><path d="M-9 9 C-18 9 -19 -3 -10 -4 C-9 -14 6 -15 8 -5 C17 -6 18 9 9 9 Z"/></g>
+  <text class="fxv-ct" x="76" y="35.0">Cloud Storage</text>
+  <text class="fxv-cs" x="76" y="53.0">Secure cloud backup</text>
+  <g class="fxv-state" transform="translate(240 39.0)">
+    <circle class="fxv-idle" r="8"/>
+    <circle class="fxv-spin" r="8" pathLength="100"/>
+    <g class="fxv-ok"><circle r="10"/><polyline points="-4,0 -1,3.5 5,-3.5"/></g>
+  </g>
+  <text class="fxv-step" x="14" y="20">04</text>
+</g>
+  <g class="fxv-chips" transform="translate(0 492)">
+    <g transform="translate(362 0)"><rect class="fxv-chip" width="262" height="30" rx="15"/><text x="131" y="19.5" text-anchor="middle" class="fxv-chipt">AADHAAR-ENABLED  ·  RESPONSE &lt; 1 SEC</text></g>
+  </g>
+</g>
+</svg>
+        </a>
+
+    </main>
+
+    
+
+    <!-- About Section: lighter teal band, split layout -->
+    <section id="about" class="band band-about relative w-full z-10">
+        <div class="absolute top-10 left-1/4 w-72 h-72 bg-cyan-500/10 rounded-full filter blur-[90px] pointer-events-none"></div>
+        <div class="absolute bottom-10 right-1/4 w-80 h-80 bg-emerald-500/10 rounded-full filter blur-[100px] pointer-events-none"></div>
+
+        <div class="band-inner about-split">
+            <div class="about-copy reveal-on-scroll">
+                <div class="section-badge">
+                    ✦ ABOUT FI-TECH
+                </div>
+                <h2 class="text-3xl sm:text-5xl font-black tracking-tight text-white leading-tight">
+                    The Architecture Behind <br class="hidden sm:block">
+                    <span class="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-emerald-400 to-blue-500">
+                        Your Next Big Thing
+                    </span>
+                </h2>
+                <p class="text-gray-300 text-sm sm:text-base font-normal leading-relaxed pt-1">
+                    Fi-Tech IT Solutions is your strategic partner in digital transformation. We specialize in building robust software, scalable web applications, and innovative IT infrastructure, bringing together creativity, technology, and business acumen to deliver solutions that drive results and future-proof your growth.
+                </p>
+            </div>
+
+            <div class="about-stack">
+                <div class="about-card bg-[#03151a]/90 border border-cyan-500/40 backdrop-blur-2xl rounded-3xl p-8 sm:p-10 shadow-2xl shadow-cyan-950/90 transition-colors duration-300 hover:border-cyan-400/80 group reveal-on-scroll">
+                    <div class="w-12 h-12 rounded-2xl bg-cyan-950/80 border border-cyan-500/40 flex items-center justify-center text-cyan-400 text-xl shadow-lg shadow-cyan-500/20 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h3 class="text-2xl font-extrabold text-white tracking-tight mt-5">Mission-Critical Reliability</h3>
+                    <p class="text-gray-300 text-sm sm:text-base leading-relaxed mt-3">
+                        Government departments and enterprise institutions rely on our systems. That same fault tolerance goes into every line of code we ship.
+                    </p>
+                </div>
+
+                <div class="about-card bg-[#041d24]/95 border border-emerald-500/50 backdrop-blur-2xl rounded-3xl p-8 sm:p-10 shadow-2xl shadow-emerald-950/90 transition-colors duration-300 hover:border-emerald-400/80 group reveal-on-scroll" style="transition-delay:120ms;">
+                    <div class="w-12 h-12 rounded-2xl bg-emerald-950/80 border border-emerald-500/40 flex items-center justify-center text-emerald-400 text-xl shadow-lg shadow-emerald-500/20 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-bolt"></i>
+                    </div>
+                    <h3 class="text-2xl font-extrabold text-white tracking-tight mt-5">Uncompromising Performance</h3>
+                    <p class="text-gray-300 text-sm sm:text-base leading-relaxed mt-3">
+                        We engineer for speed and scale, choosing the right tools so your platform stays fast as it grows.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="band band-services relative w-full z-10">
+        
+        <!-- Background Ambient Glow Orbs -->
+        <div class="absolute top-1/3 right-10 w-80 h-80 bg-cyan-500/10 rounded-full filter blur-[110px] pointer-events-none"></div>
+        <div class="absolute bottom-10 left-10 w-80 h-80 bg-emerald-500/10 rounded-full filter blur-[120px] pointer-events-none"></div>
+
+        <div class="band-inner">
+        <!-- Header Text -->
+        <div class="text-center max-w-3xl mx-auto mb-12 flex flex-col gap-4 reveal-on-scroll">
+            <div class="section-badge mx-auto">
+                ✦ OUR CORE CAPABILITIES
+            </div>
+            <h2 class="text-3xl sm:text-5xl font-black tracking-tight text-white leading-tight">
+                Infrastructure That <br>
+                <span class="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-emerald-400 to-blue-500">
+                    Delivers At Scale
+                </span>
+            </h2>
+            <p class="text-gray-300 text-sm sm:text-base font-normal leading-relaxed pt-2">
+                From startups to enterprises, we cater to a broad range of IT and software development needs with a customer-centric approach.
+            </p>
+        </div>
+
+        <!-- Interactive Category Filter Pills -->
+        <div class="flex flex-wrap items-center justify-center gap-2.5 mb-12 reveal-on-scroll">
+            <button onclick="filterServices('all')" id="btn-filter-all" class="service-filter-btn active px-5 py-2 rounded-full text-xs font-bold tracking-wider uppercase border border-cyan-400 bg-cyan-500/20 text-cyan-300 transition-all shadow-lg shadow-cyan-500/20">
+                ALL SYSTEMS
+            </button>
+            <button onclick="filterServices('engineering')" id="btn-filter-engineering" class="service-filter-btn px-5 py-2 rounded-full text-xs font-bold tracking-wider uppercase border border-cyan-900 bg-slate-900/60 text-gray-400 hover:text-cyan-300 hover:border-cyan-500/50 transition-all">
+                ENGINEERING & CLOUD
+            </button>
+            <button onclick="filterServices('data')" id="btn-filter-data" class="service-filter-btn px-5 py-2 rounded-full text-xs font-bold tracking-wider uppercase border border-cyan-900 bg-slate-900/60 text-gray-400 hover:text-cyan-300 hover:border-cyan-500/50 transition-all">
+                DATA & COMMERCE
+            </button>
+            <button onclick="filterServices('design')" id="btn-filter-design" class="service-filter-btn px-5 py-2 rounded-full text-xs font-bold tracking-wider uppercase border border-cyan-900 bg-slate-900/60 text-gray-400 hover:text-cyan-300 hover:border-cyan-500/50 transition-all">
+                UX & PLATFORMS
+            </button>
+        </div>
+
+        <!-- Service Cards Grid with Staggered Motion -->
+        <div id="serviceGrid" class="service-grid">
+            
+            <!-- 1. Bespoke Engineering -->
+            <div data-category="engineering" class="service-card-item service-card rounded-3xl p-7 flex flex-col justify-between backdrop-blur-xl reveal-on-scroll group relative overflow-hidden" style="transition-delay: 0ms;">
+                <div class="absolute -right-8 -top-8 w-28 h-28 bg-cyan-500/10 rounded-full blur-2xl group-hover:bg-cyan-500/25 transition-all"></div>
+                <div class="space-y-4 relative z-10">
+                    <div class="flex items-center justify-between">
+                        <div class="service-icon w-14 h-14 rounded-2xl bg-cyan-950/60 border border-cyan-500/30 flex items-center justify-center text-cyan-400 text-2xl transition-all duration-300 shadow-md">
+                            <i class="fa-solid fa-code"></i>
+                        </div>
+                        <span class="text-[11px] font-mono font-bold tracking-widest text-cyan-400/80 bg-cyan-950/60 border border-cyan-500/30 px-3 py-1 rounded-full uppercase">
+                            99.99% SLA
+                        </span>
+                    </div>
+                    <h3 class="text-xl font-extrabold text-white tracking-tight group-hover:text-cyan-300 transition-colors">Bespoke Engineering</h3>
+                    <p class="text-gray-300 text-sm leading-relaxed">
+                        Custom architectures tailored to your operational workflow. We build systems that fit you, not the other way around.
+                    </p>
+                    
+                    <!-- Tech Stack Pills -->
+                    <div class="flex flex-wrap gap-1.5 pt-2">
+                        <span class="text-[11px] font-mono text-cyan-300 bg-cyan-950/80 px-2.5 py-1 rounded-md border border-cyan-800/40">Node.js</span>
+                        <span class="text-[11px] font-mono text-cyan-300 bg-cyan-950/80 px-2.5 py-1 rounded-md border border-cyan-800/40">Rust</span>
+                        <span class="text-[11px] font-mono text-cyan-300 bg-cyan-950/80 px-2.5 py-1 rounded-md border border-cyan-800/40">Python</span>
+                        <span class="text-[11px] font-mono text-cyan-300 bg-cyan-950/80 px-2.5 py-1 rounded-md border border-cyan-800/40">Microservices</span>
+                    </div>
+                </div>
+                <div role="button" tabindex="0" aria-haspopup="dialog" onclick="openServiceModal(0)" class="pt-6 mt-6 border-t border-cyan-950/80 flex items-center justify-between text-xs font-bold text-cyan-400 group cursor-pointer hover:text-cyan-200 transition-colors">
+                    <span class="tracking-wider uppercase">EXPLORE ARCHITECTURE</span>
+                    <i class="fa-solid fa-arrow-right transform group-hover:translate-x-2 transition-transform"></i>
+                </div>
+            </div>
+
+            <!-- 2. Omnichannel Platforms -->
+            <div data-category="design" class="service-card-item service-card rounded-3xl p-7 flex flex-col justify-between backdrop-blur-xl reveal-on-scroll group relative overflow-hidden" style="transition-delay: 80ms;">
+                <div class="absolute -right-8 -top-8 w-28 h-28 bg-emerald-500/10 rounded-full blur-2xl group-hover:bg-emerald-500/25 transition-all"></div>
+                <div class="space-y-4 relative z-10">
+                    <div class="flex items-center justify-between">
+                        <div class="service-icon w-14 h-14 rounded-2xl bg-cyan-950/60 border border-cyan-500/30 flex items-center justify-center text-cyan-400 text-2xl transition-all duration-300 shadow-md">
+                            <i class="fa-solid fa-layer-group"></i>
+                        </div>
+                        <span class="text-[11px] font-mono font-bold tracking-widest text-emerald-400/80 bg-emerald-950/60 border border-emerald-500/30 px-3 py-1 rounded-full uppercase">
+                            CROSS-PLATFORM
+                        </span>
+                    </div>
+                    <h3 class="text-xl font-extrabold text-white tracking-tight group-hover:text-cyan-300 transition-colors">Omnichannel Platforms</h3>
+                    <p class="text-gray-300 text-sm leading-relaxed">
+                        Adaptive platforms with a consistent look and behaviour across web, mobile and every screen size.
+                    </p>
+                    
+                    <!-- Tech Stack Pills -->
+                    <div class="flex flex-wrap gap-1.5 pt-2">
+                        <span class="text-[11px] font-mono text-cyan-300 bg-cyan-950/80 px-2.5 py-1 rounded-md border border-cyan-800/40">React Native</span>
+                        <span class="text-[11px] font-mono text-cyan-300 bg-cyan-950/80 px-2.5 py-1 rounded-md border border-cyan-800/40">Flutter</span>
+                        <span class="text-[11px] font-mono text-cyan-300 bg-cyan-950/80 px-2.5 py-1 rounded-md border border-cyan-800/40">Next.js</span>
+                        <span class="text-[11px] font-mono text-cyan-300 bg-cyan-950/80 px-2.5 py-1 rounded-md border border-cyan-800/40">PWA</span>
+                    </div>
+                </div>
+                <div role="button" tabindex="0" aria-haspopup="dialog" onclick="openServiceModal(1)" class="pt-6 mt-6 border-t border-cyan-950/80 flex items-center justify-between text-xs font-bold text-cyan-400 group cursor-pointer hover:text-cyan-200 transition-colors">
+                    <span class="tracking-wider uppercase">EXPLORE PLATFORMS</span>
+                    <i class="fa-solid fa-arrow-right transform group-hover:translate-x-2 transition-transform"></i>
+                </div>
+            </div>
+
+            <!-- 3. Creative Systems -->
+            <div data-category="design" class="service-card-item service-card rounded-3xl p-7 flex flex-col justify-between backdrop-blur-xl reveal-on-scroll group relative overflow-hidden" style="transition-delay: 160ms;">
+                <div class="absolute -right-8 -top-8 w-28 h-28 bg-purple-500/10 rounded-full blur-2xl group-hover:bg-purple-500/25 transition-all"></div>
+                <div class="space-y-4 relative z-10">
+                    <div class="flex items-center justify-between">
+                        <div class="service-icon w-14 h-14 rounded-2xl bg-cyan-950/60 border border-cyan-500/30 flex items-center justify-center text-cyan-400 text-2xl transition-all duration-300 shadow-md">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        </div>
+                        <span class="text-[11px] font-mono font-bold tracking-widest text-purple-400/80 bg-purple-950/60 border border-purple-500/30 px-3 py-1 rounded-full uppercase">
+                            KINETIC UI
+                        </span>
+                    </div>
+                    <h3 class="text-xl font-extrabold text-white tracking-tight group-hover:text-cyan-300 transition-colors">Creative Systems</h3>
+                    <p class="text-gray-300 text-sm leading-relaxed">
+                        Immersive UI/UX frameworks built around motion and interaction, turning complex workflows into intuitive interfaces.
+                    </p>
+                    
+                    <!-- Tech Stack Pills -->
+                    <div class="flex flex-wrap gap-1.5 pt-2">
+                        <span class="text-[11px] font-mono text-cyan-300 bg-cyan-950/80 px-2.5 py-1 rounded-md border border-cyan-800/40">Three.js</span>
+                        <span class="text-[11px] font-mono text-cyan-300 bg-cyan-950/80 px-2.5 py-1 rounded-md border border-cyan-800/40">WebGL</span>
+                        <span class="text-[11px] font-mono text-cyan-300 bg-cyan-950/80 px-2.5 py-1 rounded-md border border-cyan-800/40">Figma</span>
+                        <span class="text-[11px] font-mono text-cyan-300 bg-cyan-950/80 px-2.5 py-1 rounded-md border border-cyan-800/40">Tailwind</span>
+                    </div>
+                </div>
+                <div role="button" tabindex="0" aria-haspopup="dialog" onclick="openServiceModal(2)" class="pt-6 mt-6 border-t border-cyan-950/80 flex items-center justify-between text-xs font-bold text-cyan-400 group cursor-pointer hover:text-cyan-200 transition-colors">
+                    <span class="tracking-wider uppercase">EXPLORE DESIGN</span>
+                    <i class="fa-solid fa-arrow-right transform group-hover:translate-x-2 transition-transform"></i>
+                </div>
+            </div>
+
+            <!-- 4. Enterprise Commerce -->
+            <div data-category="data" class="service-card-item service-card rounded-3xl p-7 flex flex-col justify-between backdrop-blur-xl reveal-on-scroll group relative overflow-hidden" style="transition-delay: 0ms;">
+                <div class="absolute -right-8 -top-8 w-28 h-28 bg-amber-500/10 rounded-full blur-2xl group-hover:bg-amber-500/25 transition-all"></div>
+                <div class="space-y-4 relative z-10">
+                    <div class="flex items-center justify-between">
+                        <div class="service-icon w-14 h-14 rounded-2xl bg-cyan-950/60 border border-cyan-500/30 flex items-center justify-center text-cyan-400 text-2xl transition-all duration-300 shadow-md">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                        </div>
+                        <span class="text-[11px] font-mono font-bold tracking-widest text-amber-400/80 bg-amber-950/60 border border-amber-500/30 px-3 py-1 rounded-full uppercase">
+                            HIGH SCALE
+                        </span>
+                    </div>
+                    <h3 class="text-xl font-extrabold text-white tracking-tight group-hover:text-cyan-300 transition-colors">Enterprise Commerce</h3>
+                    <p class="text-gray-300 text-sm leading-relaxed">
+                        High-volume commerce infrastructure with built-in analytics, global payment gateways and automated logistics.
+                    </p>
+                    
+                    <!-- Tech Stack Pills -->
+                    <div class="flex flex-wrap gap-1.5 pt-2">
+                        <span class="text-[11px] font-mono text-cyan-300 bg-cyan-950/80 px-2.5 py-1 rounded-md border border-cyan-800/40">Shopify Plus</span>
+                        <span class="text-[11px] font-mono text-cyan-300 bg-cyan-950/80 px-2.5 py-1 rounded-md border border-cyan-800/40">GraphQL</span>
+                        <span class="text-[11px] font-mono text-cyan-300 bg-cyan-950/80 px-2.5 py-1 rounded-md border border-cyan-800/40">Stripe API</span>
+                        <span class="text-[11px] font-mono text-cyan-300 bg-cyan-950/80 px-2.5 py-1 rounded-md border border-cyan-800/40">Headless</span>
+                    </div>
+                </div>
+                <div role="button" tabindex="0" aria-haspopup="dialog" onclick="openServiceModal(3)" class="pt-6 mt-6 border-t border-cyan-950/80 flex items-center justify-between text-xs font-bold text-cyan-400 group cursor-pointer hover:text-cyan-200 transition-colors">
+                    <span class="tracking-wider uppercase">EXPLORE COMMERCE</span>
+                    <i class="fa-solid fa-arrow-right transform group-hover:translate-x-2 transition-transform"></i>
+                </div>
+            </div>
+
+            <!-- 5. Data Architecture -->
+            <div data-category="data" class="service-card-item service-card rounded-3xl p-7 flex flex-col justify-between backdrop-blur-xl reveal-on-scroll group relative overflow-hidden" style="transition-delay: 80ms;">
+                <div class="absolute -right-8 -top-8 w-28 h-28 bg-blue-500/10 rounded-full blur-2xl group-hover:bg-blue-500/25 transition-all"></div>
+                <div class="space-y-4 relative z-10">
+                    <div class="flex items-center justify-between">
+                        <div class="service-icon w-14 h-14 rounded-2xl bg-cyan-950/60 border border-cyan-500/30 flex items-center justify-center text-cyan-400 text-2xl transition-all duration-300 shadow-md">
+                            <i class="fa-solid fa-database"></i>
+                        </div>
+                        <span class="text-[11px] font-mono font-bold tracking-widest text-blue-400/80 bg-blue-950/60 border border-blue-500/30 px-3 py-1 rounded-full uppercase">
+                            SUB-10MS QUERY
+                        </span>
+                    </div>
+                    <h3 class="text-xl font-extrabold text-white tracking-tight group-hover:text-cyan-300 transition-colors">Data Architecture</h3>
+                    <p class="text-gray-300 text-sm leading-relaxed">
+                        Decoupled data pipelines that scale, keeping query speed constant as your data volume grows.
+                    </p>
+                    
+                    <!-- Tech Stack Pills -->
+                    <div class="flex flex-wrap gap-1.5 pt-2">
+                        <span class="text-[11px] font-mono text-cyan-300 bg-cyan-950/80 px-2.5 py-1 rounded-md border border-cyan-800/40">Kafka</span>
+                        <span class="text-[11px] font-mono text-cyan-300 bg-cyan-950/80 px-2.5 py-1 rounded-md border border-cyan-800/40">ClickHouse</span>
+                        <span class="text-[11px] font-mono text-cyan-300 bg-cyan-950/80 px-2.5 py-1 rounded-md border border-cyan-800/40">PostgreSQL</span>
+                        <span class="text-[11px] font-mono text-cyan-300 bg-cyan-950/80 px-2.5 py-1 rounded-md border border-cyan-800/40">Redis</span>
+                    </div>
+                </div>
+                <div role="button" tabindex="0" aria-haspopup="dialog" onclick="openServiceModal(4)" class="pt-6 mt-6 border-t border-cyan-950/80 flex items-center justify-between text-xs font-bold text-cyan-400 group cursor-pointer hover:text-cyan-200 transition-colors">
+                    <span class="tracking-wider uppercase">EXPLORE DATA PIPELINES</span>
+                    <i class="fa-solid fa-arrow-right transform group-hover:translate-x-2 transition-transform"></i>
+                </div>
+            </div>
+
+            <!-- 6. Cloud Infrastructure -->
+            <div data-category="engineering" class="service-card-item service-card rounded-3xl p-7 flex flex-col justify-between backdrop-blur-xl reveal-on-scroll group relative overflow-hidden" style="transition-delay: 160ms;">
+                <div class="absolute -right-8 -top-8 w-28 h-28 bg-cyan-500/10 rounded-full blur-2xl group-hover:bg-cyan-500/25 transition-all"></div>
+                <div class="space-y-4 relative z-10">
+                    <div class="flex items-center justify-between">
+                        <div class="service-icon w-14 h-14 rounded-2xl bg-cyan-950/60 border border-cyan-500/30 flex items-center justify-center text-cyan-400 text-2xl transition-all duration-300 shadow-md">
+                            <i class="fa-solid fa-server"></i>
+                        </div>
+                        <span class="text-[11px] font-mono font-bold tracking-widest text-cyan-400/80 bg-cyan-950/60 border border-cyan-500/30 px-3 py-1 rounded-full uppercase">
+                            ZERO DOWNTIME
+                        </span>
+                    </div>
+                    <h3 class="text-xl font-extrabold text-white tracking-tight group-hover:text-cyan-300 transition-colors">Cloud Infrastructure</h3>
+                    <p class="text-gray-300 text-sm leading-relaxed">
+                        Autonomous server clusters, seamless monolithic-to-microservice migrations, and zero-downtime deployment pipelines.
+                    </p>
+                    
+                    <!-- Tech Stack Pills -->
+                    <div class="flex flex-wrap gap-1.5 pt-2">
+                        <span class="text-[11px] font-mono text-cyan-300 bg-cyan-950/80 px-2.5 py-1 rounded-md border border-cyan-800/40">AWS / GCP</span>
+                        <span class="text-[11px] font-mono text-cyan-300 bg-cyan-950/80 px-2.5 py-1 rounded-md border border-cyan-800/40">Kubernetes</span>
+                        <span class="text-[11px] font-mono text-cyan-300 bg-cyan-950/80 px-2.5 py-1 rounded-md border border-cyan-800/40">Terraform</span>
+                        <span class="text-[11px] font-mono text-cyan-300 bg-cyan-950/80 px-2.5 py-1 rounded-md border border-cyan-800/40">CI/CD</span>
+                    </div>
+                </div>
+                <div role="button" tabindex="0" aria-haspopup="dialog" onclick="openServiceModal(5)" class="pt-6 mt-6 border-t border-cyan-950/80 flex items-center justify-between text-xs font-bold text-cyan-400 group cursor-pointer hover:text-cyan-200 transition-colors">
+                    <span class="tracking-wider uppercase">EXPLORE CLOUD</span>
+                    <i class="fa-solid fa-arrow-right transform group-hover:translate-x-2 transition-transform"></i>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- What we do: Fi-Tech's six service lines -->
+        <div id="whatWeDo" class="mt-16">
+            <div class="text-center max-w-2xl mx-auto mb-10 reveal-on-scroll">
+                <h3 class="offer-heading text-2xl sm:text-3xl font-extrabold text-white tracking-tight">What We Do</h3>
+                <p class="text-gray-300 text-sm sm:text-base leading-relaxed mt-3">Our services are crafted to deliver impactful digital transformation.</p>
+            </div>
+            <div class="offer-grid">
+                <div class="offer-tile reveal-on-scroll" style="transition-delay:0ms;">
+                    <div class="offer-icon"><i class="fa-solid fa-code"></i></div>
+                    <h4>Custom Software Development</h4>
+                    <p>Tailored enterprise software and SaaS solutions that automate and simplify operations.</p>
+                </div>
+                <div class="offer-tile reveal-on-scroll" style="transition-delay:80ms;">
+                    <div class="offer-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
+                    <h4>Web &amp; Mobile App Development</h4>
+                    <p>Responsive web platforms and mobile apps for Android/iOS using modern frameworks.</p>
+                </div>
+                <div class="offer-tile reveal-on-scroll" style="transition-delay:160ms;">
+                    <div class="offer-icon"><i class="fa-solid fa-pen-ruler"></i></div>
+                    <h4>UI/UX Design</h4>
+                    <p>Intuitive design experiences that resonate with users and elevate your brand.</p>
+                </div>
+                <div class="offer-tile reveal-on-scroll" style="transition-delay:0ms;">
+                    <div class="offer-icon"><i class="fa-solid fa-cart-shopping"></i></div>
+                    <h4>E-commerce Solutions</h4>
+                    <p>Scalable e-commerce portals with secure payment integrations and user-friendly interfaces.</p>
+                </div>
+                <div class="offer-tile reveal-on-scroll" style="transition-delay:80ms;">
+                    <div class="offer-icon"><i class="fa-solid fa-cloud"></i></div>
+                    <h4>Cloud &amp; DevOps</h4>
+                    <p>Optimize infrastructure with cloud deployment, CI/CD, monitoring, and scaling strategies.</p>
+                </div>
+                <div class="offer-tile reveal-on-scroll" style="transition-delay:160ms;">
+                    <div class="offer-icon"><i class="fa-solid fa-headset"></i></div>
+                    <h4>IT Consulting &amp; Support</h4>
+                    <p>Strategic advice, system audits, and 24/7 tech support to keep your business running smoothly.</p>
+                </div>
+            </div>
+        </div>
+
+        </div>
+    </section>
+
+    <!-- Interactive Architecture Detail Modal Overlay -->
+    <div id="serviceModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md hidden opacity-0 transition-opacity duration-300">
+        <div class="bg-[#03151a] border border-cyan-500/50 rounded-3xl p-6 sm:p-8 max-w-xl w-full shadow-2xl shadow-cyan-500/20 relative transform scale-95 transition-transform duration-300" id="serviceModalContent">
+            
+            <button type="button" aria-label="Close" onclick="closeServiceModal()" class="absolute top-5 right-5 w-9 h-9 rounded-full bg-cyan-950/80 border border-cyan-500/40 text-cyan-400 hover:text-white flex items-center justify-center text-sm transition-colors">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="flex items-center gap-3 text-cyan-400 text-xs font-mono font-bold uppercase tracking-widest mb-3" id="modalBadge">
+                <span class="w-2 h-2 rounded-full bg-cyan-400"></span> ARCHITECTURE SPEC
+            </div>
+
+            <h3 class="text-2xl sm:text-3xl font-extrabold text-white mb-3" id="modalTitle">
+                Service Title
+            </h3>
+
+            <p class="text-gray-300 text-sm leading-relaxed mb-6" id="modalDesc">
+                Service description text goes here.
+            </p>
+
+            <div class="space-y-3 border-t border-cyan-950 pt-4 mb-6">
+                <div class="text-xs font-bold text-cyan-400 uppercase tracking-wider">KEY ARCHITECTURAL HIGHLIGHTS</div>
+                <ul class="space-y-2 text-xs text-gray-300 font-mono" id="modalList">
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Fault-tolerant distributed clusters</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Automated failover & zero-downtime releases</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Military-grade AES-256 encryption at rest</li>
+                </ul>
+            </div>
+
+            <div class="flex items-center justify-end gap-3 pt-2 border-t border-cyan-950">
+                <button onclick="closeServiceModal()" class="px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider border border-cyan-900 bg-slate-900/60 text-gray-300 hover:text-white transition-colors">
+                    CLOSE
+                </button>
+                <button onclick="requestBriefing()" class="bg-gradient-to-r from-cyan-400 to-blue-600 hover:from-cyan-300 hover:to-blue-500 text-white font-extrabold text-xs uppercase px-6 py-2.5 rounded-full btn-cyan-glow">
+                    REQUEST BRIEFING
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- Portfolio / Trusted Partners -->
+    <section id="portfolio" class="band band-portfolio relative w-full z-10">
+        <div class="band-inner text-center">
+            <div class="section-badge reveal-on-scroll">
+                ✦ Trusted Partners
+            </div>
+            <h2 class="reveal-on-scroll portfolio-title mt-5 text-3xl sm:text-5xl font-black tracking-tight text-white leading-tight" style="transition-delay: 0ms;">
+                Organizations That <span class="bg-gradient-to-r from-blue-500 to-cyan-300 bg-clip-text text-transparent">Count on Us</span>
+            </h2>
+            <p class="reveal-on-scroll text-gray-300 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto mt-6" style="transition-delay:150ms;">
+                A glimpse into what we've delivered for our clients. We've helped clients across industries simplify complex challenges with beautiful, efficient, and scalable digital solutions.
+            </p>
+        </div>
+
+        <!-- 3D Carousel -->
+        <div class="relative mt-10">
+            <div id="partnerStage" class="partner-stage">
+                <div class="partner-card" data-name="Dept of Agriculture">
+                    <div class="partner-logo"><img src="images/agriculture.png" width="159" height="164" decoding="async" alt="Dept of Agriculture logo" loading="lazy" draggable="false"></div>
+                    <div class="partner-name">Dept of Agriculture</div>
+                </div>
+                <div class="partner-card" data-name="Bank of Baroda">
+                    <div class="partner-logo"><img src="images/baroda.png" width="632" height="206" decoding="async" alt="Bank of Baroda logo" loading="lazy" draggable="false"></div>
+                    <div class="partner-name">Bank of Baroda</div>
+                </div>
+                <div class="partner-card" data-name="Bank of Maharashtra">
+                    <div class="partner-logo"><img src="images/bom.png" width="900" height="244" decoding="async" alt="Bank of Maharashtra logo" loading="lazy" draggable="false"></div>
+                    <div class="partner-name">Bank of Maharashtra</div>
+                </div>
+                <div class="partner-card" data-name="CBI">
+                    <div class="partner-logo"><img src="images/cbi.png" width="900" height="309" decoding="async" alt="CBI logo" loading="lazy" draggable="false"></div>
+                    <div class="partner-name">CBI</div>
+                </div>
+                <div class="partner-card" data-name="Disaster Management">
+                    <div class="partner-logo"><img src="images/disaster.png" width="164" height="164" decoding="async" alt="Disaster Management logo" loading="lazy" draggable="false"></div>
+                    <div class="partner-name">Disaster Management</div>
+                </div>
+                <div class="partner-card" data-name="MPUDC">
+                    <div class="partner-logo"><img src="images/mpudc.png" width="175" height="157" decoding="async" alt="MPUDC logo" loading="lazy" draggable="false"></div>
+                    <div class="partner-name">MPUDC</div>
+                </div>
+                <div class="partner-card" data-name="MSSIDC">
+                    <div class="partner-logo"><img src="images/mssidc.png" width="172" height="143" decoding="async" alt="MSSIDC logo" loading="lazy" draggable="false"></div>
+                    <div class="partner-name">MSSIDC</div>
+                </div>
+                <div class="partner-card" data-name="Tribal Development">
+                    <div class="partner-logo"><img src="images/tribal.png" width="147" height="159" decoding="async" alt="Tribal Development logo" loading="lazy" draggable="false"></div>
+                    <div class="partner-name">Tribal Development</div>
+                </div>
+            </div>
+
+            <button id="partnerPrev" aria-label="Previous" class="partner-arrow left-3 sm:left-8"><i class="fa-solid fa-chevron-left"></i></button>
+            <button id="partnerNext" aria-label="Next" class="partner-arrow right-3 sm:right-8"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+    </section>
+
+    <!-- Certifications & Achievements -->
+    <section id="certifications" class="band band-certs relative w-full z-10" aria-labelledby="certsTitle">
+        <div class="band-inner text-center">
+            <div class="section-badge reveal-on-scroll">
+                ✦ Compliance &amp; Trust
+            </div>
+            <h2 id="certsTitle" class="reveal-on-scroll portfolio-title mt-5 text-3xl sm:text-5xl font-black tracking-tight text-white leading-tight" style="transition-delay: 0ms;">
+                Certifications <span class="bg-gradient-to-r from-blue-500 to-cyan-300 bg-clip-text text-transparent">&amp; Achievements</span>
+            </h2>
+            <p class="reveal-on-scroll text-gray-300 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto mt-6" style="transition-delay:150ms;">
+                Management-system certifications, product licences and test records behind our FaceEX terminals and services. Click a certificate to open the original PDF.
+            </p>
+        </div>
+
+        <!-- 3D Carousel (same component as the partner carousel above) -->
+        <div class="relative mt-10">
+            <div id="certStage" class="partner-stage cert-stage">
+                <a class="partner-card cert-slide" href="certificates/iso-27001-isms.pdf" target="_blank" rel="noopener" data-name="ISO/IEC 27001:2022" aria-label="ISO/IEC 27001:2022 Information Security Management Systems, Royal Impact Certification Ltd. Opens the PDF in a new tab.">
+                    <div class="partner-logo"><img src="images/certs/iso-27001-isms.jpg" width="720" height="1018" decoding="async" alt="ISO/IEC 27001:2022 certificate preview" loading="lazy" draggable="false"><span class="cert-open" aria-hidden="true"><i class="fa-solid fa-arrow-up-right-from-square"></i></span></div>
+                    <div class="partner-name">ISO/IEC 27001:2022</div>
+                    <div class="cert-sub">Royal Impact Certification Ltd.</div>
+                </a>
+                <a class="partner-card cert-slide" href="certificates/iso-20000-1-itsms.pdf" target="_blank" rel="noopener" data-name="ISO/IEC 20000-1:2018" aria-label="ISO/IEC 20000-1:2018 IT Service Management Systems, Royal Impact Certification Ltd. Opens the PDF in a new tab.">
+                    <div class="partner-logo"><img src="images/certs/iso-20000-1-itsms.jpg" width="720" height="1018" decoding="async" alt="ISO/IEC 20000-1:2018 certificate preview" loading="lazy" draggable="false"><span class="cert-open" aria-hidden="true"><i class="fa-solid fa-arrow-up-right-from-square"></i></span></div>
+                    <div class="partner-name">ISO/IEC 20000-1:2018</div>
+                    <div class="cert-sub">Royal Impact Certification Ltd.</div>
+                </a>
+                <a class="partner-card cert-slide" href="certificates/iso-9001-qms.pdf" target="_blank" rel="noopener" data-name="ISO 9001:2015" aria-label="ISO 9001:2015 Quality Management Systems, Royal Assessments Pvt. Ltd. Opens the PDF in a new tab.">
+                    <div class="partner-logo"><img src="images/certs/iso-9001-qms.jpg" width="720" height="1018" decoding="async" alt="ISO 9001:2015 certificate preview" loading="lazy" draggable="false"><span class="cert-open" aria-hidden="true"><i class="fa-solid fa-arrow-up-right-from-square"></i></span></div>
+                    <div class="partner-name">ISO 9001:2015</div>
+                    <div class="cert-sub">Royal Assessments Pvt. Ltd.</div>
+                </a>
+                <a class="partner-card cert-slide" href="certificates/bis-licence.pdf" target="_blank" rel="noopener" data-name="BIS Licence" aria-label="BIS Licence for the FaceEX Face Recognition Terminal, Bureau of Indian Standards. Opens the PDF in a new tab.">
+                    <div class="partner-logo"><img src="images/certs/bis-licence.jpg" width="720" height="1018" decoding="async" alt="BIS licence preview" loading="lazy" draggable="false"><span class="cert-open" aria-hidden="true"><i class="fa-solid fa-arrow-up-right-from-square"></i></span></div>
+                    <div class="partner-name">BIS Licence</div>
+                    <div class="cert-sub">Bureau of Indian Standards</div>
+                </a>
+                <a class="partner-card cert-slide" href="certificates/fcc-compliance.pdf" target="_blank" rel="noopener" data-name="FCC Compliance" aria-label="FCC Certificate of Compliance, Royal Stancert B.V. Opens the PDF in a new tab.">
+                    <div class="partner-logo"><img src="images/certs/fcc-compliance.jpg" width="720" height="1018" decoding="async" alt="FCC certificate of compliance preview" loading="lazy" draggable="false"><span class="cert-open" aria-hidden="true"><i class="fa-solid fa-arrow-up-right-from-square"></i></span></div>
+                    <div class="partner-name">FCC Compliance</div>
+                    <div class="cert-sub">Royal Stancert B.V.</div>
+                </a>
+                <a class="partner-card cert-slide" href="certificates/ce-low-voltage.pdf" target="_blank" rel="noopener" data-name="CE Low Voltage Directive" aria-label="CE Low Voltage Directive 2014/35/EU compliance, Royal Stancert B.V. Opens the PDF in a new tab.">
+                    <div class="partner-logo"><img src="images/certs/ce-low-voltage.jpg" width="720" height="1018" decoding="async" alt="CE Low Voltage Directive certificate preview" loading="lazy" draggable="false"><span class="cert-open" aria-hidden="true"><i class="fa-solid fa-arrow-up-right-from-square"></i></span></div>
+                    <div class="partner-name">CE · Low Voltage</div>
+                    <div class="cert-sub">Royal Stancert B.V.</div>
+                </a>
+                <a class="partner-card cert-slide" href="certificates/rohs-3.pdf" target="_blank" rel="noopener" data-name="RoHS 3 Compliance" aria-label="RoHS 3 compliance, Directive 2015/863/EU, Royal Stancert B.V. Opens the PDF in a new tab.">
+                    <div class="partner-logo"><img src="images/certs/rohs-3.jpg" width="720" height="1018" decoding="async" alt="RoHS 3 certificate preview" loading="lazy" draggable="false"><span class="cert-open" aria-hidden="true"><i class="fa-solid fa-arrow-up-right-from-square"></i></span></div>
+                    <div class="partner-name">RoHS 3 Compliance</div>
+                    <div class="cert-sub">Royal Stancert B.V.</div>
+                </a>
+                <a class="partner-card cert-slide" href="certificates/etdc-test-report.pdf" target="_blank" rel="noopener" data-name="ETDC Test Report" aria-label="ETDC Pune test report for the FaceEX Facial Recognition Terminal. Opens the PDF in a new tab.">
+                    <div class="partner-logo"><img src="images/certs/etdc-test-report.jpg" width="720" height="1018" decoding="async" alt="ETDC Pune test report preview" loading="lazy" draggable="false"><span class="cert-open" aria-hidden="true"><i class="fa-solid fa-arrow-up-right-from-square"></i></span></div>
+                    <div class="partner-name">ETDC Test Report</div>
+                    <div class="cert-sub">Electronics Test &amp; Development Centre, Pune</div>
+                </a>
+            </div>
+
+            <button id="certPrev" aria-label="Previous" class="partner-arrow left-3 sm:left-8"><i class="fa-solid fa-chevron-left"></i></button>
+            <button id="certNext" aria-label="Next" class="partner-arrow right-3 sm:right-8"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+    </section>
+
+    <!-- Methodology / From Blueprint to Execution -->
+    <section id="process" class="band band-process relative w-full z-10">
+        <div class="band-inner">
+
+            <div class="text-center max-w-3xl mx-auto mb-14 flex flex-col items-center gap-4">
+                <div class="section-badge reveal-on-scroll">
+                    ✦ Methodology
+                </div>
+                <h2 class="process-title text-3xl sm:text-5xl font-black tracking-tight text-white leading-tight">
+                    From Blueprint to <br class="hidden sm:block">
+                    <span class="bg-gradient-to-r from-blue-500 to-cyan-300 bg-clip-text text-transparent">Execution</span>
+                </h2>
+                <p class="reveal-on-scroll text-gray-300 text-sm sm:text-base leading-relaxed max-w-xl" style="transition-delay:150ms;">
+                    Four phases, full transparency. You know where your project stands at every step.
+                </p>
+            </div>
+
+            <div id="processGrid" class="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                <div class="process-line hidden lg:block"><i id="processFill"></i></div>
+                <div class="process-card reveal-on-scroll" style="--c1:#38a5f1;--c2:#1fc8d8;--glow:56,165,241;transition-delay:0ms;">
+                    <div class="process-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+                    <div class="process-phase">PHASE 01</div>
+                    <h3 class="process-name">Define</h3>
+                    <p class="process-desc">We begin with discovery—understanding your goals, target audience, and challenges. Our team defines clear, measurable objectives to shape project direction.</p>
+                </div>
+                <div class="process-card reveal-on-scroll" style="--c1:#6d4aff;--c2:#a855f7;--glow:124,77,255;transition-delay:120ms;">
+                    <div class="process-icon"><i class="fa-solid fa-palette"></i></div>
+                    <div class="process-phase">PHASE 02</div>
+                    <h3 class="process-name">Design</h3>
+                    <p class="process-desc">Our UI/UX experts craft intuitive, engaging designs aligned with your brand identity and user behavior insights.</p>
+                </div>
+                <div class="process-card reveal-on-scroll" style="--c1:#c026d3;--c2:#ec4899;--glow:217,70,239;transition-delay:240ms;">
+                    <div class="process-icon"><i class="fa-solid fa-code"></i></div>
+                    <div class="process-phase">PHASE 03</div>
+                    <h3 class="process-name">Build</h3>
+                    <p class="process-desc">Our developers engineer high-performance applications using the latest technologies, ensuring scalability and security.</p>
+                </div>
+                <div class="process-card reveal-on-scroll" style="--c1:#10c98f;--c2:#34d399;--glow:16,201,143;transition-delay:360ms;">
+                    <div class="process-icon"><i class="fa-solid fa-rocket"></i></div>
+                    <div class="process-phase">PHASE 04</div>
+                    <h3 class="process-name">Launch</h3>
+                    <p class="process-desc">We deploy solutions seamlessly and support your go-live with testing, training, and optimization strategies.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+<footer id="contact" class="site-footer relative z-10 w-full mt-8 border-t border-cyan-500/30 bg-[#010d14]/90 backdrop-blur-xl">
+    <div class="laser-divider"></div>
+
+    <div class="max-w-[1280px] mx-auto px-6 lg:px-14 pt-14 pb-8">
+        <div class="footer-cta reveal-on-scroll">
+            <div>
+                <h3 class="footer-cta-title">Have a project in mind? Let's make it happen together.</h3>
+            </div>
+            <a href="mailto:info@fitechit.com" class="btn-cyan-glow bg-gradient-to-r from-cyan-400 to-blue-600 hover:from-cyan-300 hover:to-blue-500 text-white font-extrabold tracking-wider px-7 py-3 rounded-full text-xs uppercase inline-flex items-center gap-2"><i class="fa-solid fa-envelope"></i> Get in touch</a>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-10">
+
+            <!-- Brand -->
+            <div class="reveal-on-scroll lg:col-span-4 space-y-5">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl border-2 border-cyan-400 bg-cyan-950/40 flex items-center justify-center font-black text-cyan-400 text-lg shadow-lg shadow-cyan-500/20">FIS</div>
+                    <div class="flex flex-col">
+                        <span class="footer-brand text-lg font-black tracking-wider text-white leading-none">Fi-Tech <span class="text-cyan-400 font-bold">IT</span></span>
+                        <span class="text-[10px] text-gray-400 tracking-[0.25em] uppercase font-semibold mt-0.5">SOLUTIONS</span>
+                    </div>
+                </div>
+                <p class="text-gray-400 text-sm leading-relaxed max-w-sm">
+                    Robust software, precision biometrics, cloud systems and real estate digital engines for global enterprises and government.
+                </p>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="reveal-on-scroll lg:col-span-2 space-y-4" style="transition-delay:120ms;">
+                <h4 class="footer-heading text-xs font-extrabold tracking-[0.2em] uppercase text-white">Quick Links</h4>
+                <ul class="space-y-2.5 text-sm text-gray-400">
+                    <li><a href="#home" class="footer-link hover:text-cyan-400 transition-colors">Home</a></li>
+                    <li><a href="#about" class="footer-link hover:text-cyan-400 transition-colors">About</a></li>
+                    <li><a href="#services" class="footer-link hover:text-cyan-400 transition-colors">Services</a></li>
+                    <li><a href="faceex.html" class="footer-link hover:text-cyan-400 transition-colors">Products</a></li>
+                    <li><a href="#portfolio" class="footer-link hover:text-cyan-400 transition-colors">Portfolio</a></li>
+                    <li><a href="#contact" class="footer-link hover:text-cyan-400 transition-colors">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Services -->
+            <div class="reveal-on-scroll lg:col-span-3 space-y-4" style="transition-delay:240ms;">
+                <h4 class="footer-heading text-xs font-extrabold tracking-[0.2em] uppercase text-white">Services</h4>
+                <ul class="space-y-2.5 text-sm text-gray-400">
+                    <li><a href="#services" class="footer-link hover:text-cyan-400 transition-colors">Custom Software Development</a></li>
+                    <li><a href="#services" class="footer-link hover:text-cyan-400 transition-colors">Web &amp; Mobile App Development</a></li>
+                    <li><a href="#services" class="footer-link hover:text-cyan-400 transition-colors">UI/UX Design</a></li>
+                    <li><a href="#services" class="footer-link hover:text-cyan-400 transition-colors">E-commerce Solutions</a></li>
+                    <li><a href="#services" class="footer-link hover:text-cyan-400 transition-colors">Cloud &amp; DevOps</a></li>
+                    <li><a href="#services" class="footer-link hover:text-cyan-400 transition-colors">IT Consulting &amp; Support</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact -->
+            <div class="reveal-on-scroll lg:col-span-3 space-y-4" style="transition-delay:360ms;">
+                <h4 class="footer-heading text-xs font-extrabold tracking-[0.2em] uppercase text-white">Contact</h4>
+                <ul class="space-y-3 text-sm text-gray-400">
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-location-dot text-cyan-400 mt-1"></i><span>505/506 Sai Integrate, Beside Marigold Banquet Bavdhan, Pune - 411021</span></li>
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-envelope text-cyan-400 mt-1"></i><a href="mailto:info@fitechit.com" class="footer-link hover:text-cyan-400 transition-colors">info@fitechit.com</a></li>
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-phone text-cyan-400 mt-1"></i><span class="flex flex-wrap gap-x-3"><a href="tel:+919370959455" class="footer-link hover:text-cyan-400 transition-colors">+91 9370959455</a><a href="tel:+918459497965" class="footer-link hover:text-cyan-400 transition-colors">+91 8459497965</a></span></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Bottom bar -->
+        <div class="reveal-on-scroll mt-12 pt-6 border-t border-cyan-950/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-500">
+            <p>&copy; <span id="footerYear">2026</span> Fi-Tech IT Solutions. All rights reserved.</p>
+            <div class="flex items-center gap-5">
+                <a href="privacy-policy.html" class="footer-link hover:text-cyan-400 transition-colors">Privacy Policy</a>
+                <a href="terms-of-service.html" class="footer-link hover:text-cyan-400 transition-colors">Terms of Service</a>
+                <a href="#home" class="w-8 h-8 rounded-full border border-cyan-500/30 text-cyan-400 flex items-center justify-center hover:bg-cyan-400 hover:text-[#02090d] transition-all" aria-label="Back to top"><i class="fa-solid fa-arrow-up text-xs"></i></a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+    <script src="js/script.js"></script>
+
+
+
+    <script src="js/legal-modal.js"></script>
+</body>
+</html>

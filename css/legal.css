@@ -1,0 +1,49 @@
+/* Legal pages (privacy-policy.html, terms-of-service.html): readable document card on the site theme */
+.legal-card { scroll-margin-top: 96px; }
+.legal-card a { text-decoration-color: rgba(34, 211, 238, 0.5); }
+.legal-toc a { transition: color .25s ease, border-color .25s ease, background-color .25s ease; }
+
+body.light-mode .legal-card {
+    background: #ffffff !important;
+    border-color: var(--day-border) !important;
+    box-shadow: var(--day-shadow) !important;
+    color: var(--day-body);
+}
+body.light-mode .legal-card .text-white,
+body.light-mode .legal-card h4,
+body.light-mode .legal-card strong { color: var(--day-heading) !important; }
+body.light-mode .legal-card .text-gray-300,
+body.light-mode .legal-card li,
+body.light-mode .legal-card p { color: var(--day-body); }
+body.light-mode .legal-card .text-gray-400 { color: var(--day-muted) !important; }
+body.light-mode .legal-card .text-cyan-400,
+body.light-mode .legal-card a { color: var(--day-accent) !important; }
+body.light-mode .legal-card [class*="bg-[#010d14]"] { background: #f1f7f9 !important; border-color: var(--day-border) !important; }
+body.light-mode .legal-card [class*="border-cyan"] { border-color: var(--day-border) !important; }
+body.light-mode .legal-meta { color: var(--day-accent) !important; }
+body.light-mode .legal-lead { color: var(--day-body) !important; }
+
+/* Backdrop matching the old pop-up overlay: near-black with a soft blue/cyan glow */
+body.legal-page {
+    background:
+        radial-gradient(ellipse 45% 38% at 88% 52%, rgba(37, 99, 235, 0.22), transparent 70%),
+        radial-gradient(ellipse 40% 32% at 8% 12%, rgba(0, 242, 254, 0.08), transparent 70%),
+        #02070a;
+}
+body.light-mode.legal-page { background: #eef3f6; }
+body.light-mode .legal-card #legalClose { color: var(--day-accent) !important; }
+#legalClose:focus-visible { outline: 2px solid #00f2fe; outline-offset: 3px; border-radius: 9999px; }
+
+/* ---- Embedded mode: the same page shown inside the pop-up on Home / Product / Contact Us (?embed=1) ---- */
+.legal-embed-head { display: none; }
+html.is-embed, html.is-embed body { background: #03151a !important; min-height: 0 !important; }
+html.is-embed header,
+html.is-embed #mobileNav,
+html.is-embed #scrollProgress,
+html.is-embed footer,
+html.is-embed .legal-hero,
+html.is-embed .legal-actions { display: none !important; }
+html.is-embed main { padding: 1.5rem !important; max-width: none !important; margin: 0 !important; }
+@media (min-width: 1024px) { html.is-embed main { padding: 2rem !important; } }
+html.is-embed .legal-embed-head { display: block; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(6, 182, 212, 0.3); }
+html.is-embed .legal-card { background: transparent !important; border: 0 !important; box-shadow: none !important; padding: 0 !important; border-radius: 0 !important; backdrop-filter: none !important; }

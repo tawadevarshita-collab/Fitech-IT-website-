@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FaceEX Attendance System | Fi-Tech IT Solutions</title>
+    <meta name="description" content="FaceEX is an Aadhaar-enabled facial recognition attendance system by Fi-Tech IT Solutions: real-time attendance, UIDAI authentication, GSM connectivity and cloud backup.">
+    <meta name="theme-color" content="#02090d">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='4' y='4' width='56' height='56' rx='14' fill='%23042027' stroke='%2300f2fe' stroke-width='5'/%3E%3Ctext x='32' y='42' font-family='Arial' font-weight='900' font-size='24' text-anchor='middle' fill='%2300f2fe'%3EFIS%3C/text%3E%3C/svg%3E">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+        /* Reveal animations only hide content when JS is running. */
+        if ('IntersectionObserver' in window) document.documentElement.classList.add('js');
+        setTimeout(function () { if (!window.__fisReady) document.documentElement.classList.remove('js'); }, 3000);
+    </script>
+</head>
+<body class="relative min-h-screen flex flex-col justify-between bg-exact-hero overflow-y-auto fe-pg">
+    <div id="scrollProgress"></div>
+    <!-- Header / Navbar -->
+    <header class="w-full py-4 px-6 lg:px-14 flex items-center justify-between z-40 border-b border-cyan-950/40 backdrop-blur-xl fixed top-0 left-0 bg-[#02090d]/85">
+        
+        <!-- FIS Logo -->
+        <a href="index.html" data-page class="flex items-center gap-3 cursor-pointer group">
+            <div class="w-10 h-10 rounded-xl border-2 border-cyan-400 bg-cyan-950/40 flex items-center justify-center font-black text-cyan-400 text-lg shadow-lg shadow-cyan-500/20 group-hover:scale-105 transition-transform">
+                FIS
+            </div>
+            <div class="flex flex-col">
+                <span class="text-lg font-black tracking-wider text-white leading-none">
+                    Fi-Tech <span class="text-cyan-400 font-bold">IT</span>
+                </span>
+                <span class="text-[10px] text-gray-400 tracking-[0.25em] uppercase font-semibold mt-0.5">SOLUTIONS</span>
+            </div>
+        </a>
+
+        <!-- Navigation Links -->
+        <nav class="hidden lg:flex items-center gap-7 text-xs font-bold tracking-wider text-gray-300">
+            <a href="homepage.html" data-page class="hover:text-cyan-400 transition-colors py-1">HOME</a>
+            <a href="homepage.html" data-page class="hover:text-cyan-400 transition-colors py-1">ABOUT</a>
+            <a href="homepage.html" data-page class="hover:text-cyan-400 transition-colors py-1">SERVICES</a>
+            <a href="#feTop" class="hover:text-cyan-400 transition-colors py-1 border-b-2 border-cyan-400 text-white">PRODUCTS</a>
+            <a href="homepage.html" data-page class="hover:text-cyan-400 transition-colors py-1">PORTFOLIO</a>
+            <a href="contactus.html" class="hover:text-cyan-400 transition-colors py-1">CONTACT</a>
+        </nav>
+
+        <!-- CTA Action Buttons -->
+        <div class="flex items-center gap-3">
+            <button id="mobileMenuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav" class="lg:hidden"><i class="fa-solid fa-bars"></i></button>
+            <button id="themeToggleBtn" type="button" aria-label="Toggle light or dark theme" onclick="toggleTheme()" title="Switch to Light Mode" class="w-9 h-9 rounded-full border border-cyan-500/40 bg-cyan-950/40 hover:bg-cyan-900/60 text-cyan-400 flex items-center justify-center transition-all shadow-md hover:scale-105 active:scale-95">
+                <i id="themeIcon" class="fa-solid fa-sun text-amber-400 text-sm"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile navigation -->
+    <div id="mobileNav" aria-hidden="true">
+        <a href="index.html#home" data-page>HOME</a>
+        <a href="index.html#about" data-page>ABOUT</a>
+        <a href="index.html#services" data-page>SERVICES</a>
+        <a href="#feTop">PRODUCTS</a>
+        <a href="index.html#portfolio" data-page>PORTFOLIO</a>
+        <a href="contactus.html">CONTACT</a>
+    </div>
+
+    <main>
+    <section id="feTop" class="fe-hero">
+        <canvas id="feCanvas" aria-hidden="true"></canvas>
+        <div>
+            <div class="fe-pill fe-bi"><i>FaceEX</i>Aadhaar-Enabled Biometric Hub</div>
+            <h1 class="fe-h1 fe-bi" style="margin-top:26px"><span class="fe-w">The</span> <span class="fe-grad">FaceEX</span><br><span class="fe-grad">Attendance System</span></h1>
+            <p class="fe-bi text-gray-400 text-lg lg:text-xl max-w-2xl mx-auto" style="margin:26px auto 36px">Advanced volumetric facial recognition synchronized directly with core biometric infrastructure for secure, instantaneous, and tamper-proof access.</p>
+            <div class="fe-bi flex gap-4 justify-center flex-wrap"><a href="#contact" class="fe-btn">Request Demo <i class="fa-solid fa-arrow-right"></i></a><a href="#specs" class="fe-btn fe-ghost">View Specifications</a></div>
+        </div>
+    </section>
+
+    <section id="feSystem" class="fe-sec">
+        <span class="fe-lbl reveal-on-scroll">System Overview</span>
+        <h2 class="fe-title reveal-on-scroll">Intelligent Biometric <span class="fe-grad">Attendance</span></h2>
+        <p class="reveal-on-scroll text-gray-400 max-w-2xl mx-auto mt-4">Our system uses advanced facial recognition technology to match individuals' faces with Aadhaar biometric data, ensuring secure and accurate attendance recording.</p>
+        <div class="fe-grid"><div class="fe-card reveal-on-scroll"><div class="fe-ic"><i class="fa-solid fa-expand"></i></div><h3>Biometric Hardware</h3><p>High-quality camera &amp; sensors for clear face capture in diverse lighting, with response time &lt; 1 second.</p></div><div class="fe-card reveal-on-scroll"><div class="fe-ic"><i class="fa-solid fa-battery-full"></i></div><h3>Electricity Failure Support</h3><p>Built-in battery with backup up-to 12 hours ensures continuous operation.</p></div><div class="fe-card reveal-on-scroll"><div class="fe-ic"><i class="fa-solid fa-shield-halved"></i></div><h3>Aadhaar Integration Module</h3><p>Communicates with the UIDAI database for secure Aadhaar-based authentication.</p></div><div class="fe-card reveal-on-scroll"><div class="fe-ic"><i class="fa-solid fa-chart-column"></i></div><h3>Attendance Management Software</h3><p>Records attendance, generates reports, and integrates with other HR systems.</p></div><div class="fe-card reveal-on-scroll"><div class="fe-ic"><i class="fa-solid fa-tower-cell"></i></div><h3>GSM Connectivity</h3><p>No local network access required, GSM sim-based hardware included for data communication.</p></div><div class="fe-card reveal-on-scroll"><div class="fe-ic"><i class="fa-solid fa-cloud"></i></div><h3>Cloud Backup</h3><p>Ensures secure, scalable storage for long-term data retention and accessibility.</p></div></div>
+        <h2 class="fe-title reveal-on-scroll" style="margin-top:100px">How It Works</h2>
+        <div class="grid gap-4 max-w-3xl mx-auto mt-10"><div class="fe-step reveal-on-scroll"><div class="fe-ic"><i class="fa-solid fa-camera"></i></div><div><h3><em>1</em>Face Capture</h3><p>The camera captures the face and matches it with stored Aadhaar authenticated data.</p></div></div><div class="fe-step reveal-on-scroll"><div class="fe-ic"><i class="fa-solid fa-shield-halved"></i></div><div><h3><em>2</em>Aadhaar Authentication</h3><p>The system communicates with UIDAI's secure servers to authenticate the individual's identity based on their Aadhaar data.</p></div></div><div class="fe-step reveal-on-scroll"><div class="fe-ic"><i class="fa-solid fa-database"></i></div><div><h3><em>3</em>Attendance Management System</h3><p>The attendance is logged in real-time and stored securely for immediate access and management.</p></div></div><div class="fe-step reveal-on-scroll"><div class="fe-ic"><i class="fa-solid fa-cloud"></i></div><div><h3><em>4</em>Cloud Storage/Database</h3><p>Attendance data is automatically uploaded to a cloud-based system for secure storage, analysis, and reporting.</p></div></div></div>
+    </section>
+
+    <section id="feFeatures" class="fe-sec">
+        <span class="fe-lbl reveal-on-scroll">System Features</span>
+        <h2 class="fe-title reveal-on-scroll">Powerful Features for <span class="fe-grad">Modern Attendance</span></h2>
+        <div class="fe-grid"><div class="fe-card reveal-on-scroll"><div class="fe-ic"><i class="fa-solid fa-shield-halved"></i></div><h3>Aadhaar-Based Authentication</h3><p>Link the unique Aadhaar number with facial recognition for precise identification.</p></div><div class="fe-card reveal-on-scroll"><div class="fe-ic"><i class="fa-solid fa-clock"></i></div><h3>Real-Time Attendance</h3><p>Instant attendance marking as employees or students face the camera.</p></div><div class="fe-card reveal-on-scroll"><div class="fe-ic"><i class="fa-solid fa-chart-column"></i></div><h3>Reports and Analytics</h3><p>Generate reports for individuals, departments, or classes and track attendance patterns.</p></div><div class="fe-card reveal-on-scroll"><div class="fe-ic"><i class="fa-solid fa-lock"></i></div><h3>Data Privacy and Security</h3><p>Encrypted storage and transfer keep biometric data protected at all times.</p></div><div class="fe-card reveal-on-scroll"><div class="fe-ic"><i class="fa-solid fa-laptop"></i></div><h3>Easy Deployment</h3><p>Compact hardware that installs quickly at entrances, classrooms, or offices.</p></div><div class="fe-card reveal-on-scroll"><div class="fe-ic"><i class="fa-solid fa-wifi"></i></div><h3>Offline Capability</h3><p>Keeps recording during outages and syncs once connectivity returns.</p></div></div>
+        <span class="fe-lbl reveal-on-scroll" style="margin-top:100px">Benefits</span>
+        <h2 class="fe-title reveal-on-scroll">Unlock Significant <span class="fe-grad">Advantages</span></h2>
+        <div class="fe-grid"><div class="fe-card reveal-on-scroll"><div class="fe-ic"><i class="fa-solid fa-bolt"></i></div><h3>Improved Efficiency</h3><p>The automation of attendance recording reduces manual efforts and administrative overhead.</p></div><div class="fe-card reveal-on-scroll"><div class="fe-ic"><i class="fa-solid fa-shield-halved"></i></div><h3>Enhanced Security</h3><p>Combines biometric facial recognition with Aadhaar verification to prevent fraud.</p></div><div class="fe-card reveal-on-scroll"><div class="fe-ic"><i class="fa-solid fa-circle-check"></i></div><h3>Cost-Effective</h3><p>Eliminate the need for manual roll-calls, registers, or attendance sheets.</p></div><div class="fe-card reveal-on-scroll"><div class="fe-ic"><i class="fa-solid fa-award"></i></div><h3>Compliance with Regulations</h3><p>By integrating Aadhaar, the system adheres to government standards for biometric data management.</p></div><div class="fe-card reveal-on-scroll"><div class="fe-ic"><i class="fa-solid fa-server"></i></div><h3>Seamless Integration</h3><p>Easily integrates with existing HR and attendance management systems for streamlined operations.</p></div></div>
+    </section>
+
+    <section id="fePrivacy" class="fe-sec">
+        <span class="fe-lbl reveal-on-scroll">Privacy &amp; Data Security</span>
+        <h2 class="fe-title reveal-on-scroll">Your Data's Security is<br><span class="fe-grad">Our Top Priority</span></h2>
+        <div class="fe-grid"><div class="fe-card fe-noic reveal-on-scroll"><h3>Aadhaar Data Security</h3><p>The system uses encrypted communication to securely transfer data to UIDAI's servers.</p></div><div class="fe-card fe-noic reveal-on-scroll"><h3>Data Minimization</h3><p>Only essential data (such as biometric templates and attendance records) will be stored, following strict data protection guidelines.</p></div><div class="fe-card fe-noic reveal-on-scroll"><h3>Legal Compliance</h3><p>Adheres to the Aadhar Act, 2016, and other applicable laws regarding data privacy and security.</p></div></div>
+    </section>
+
+    <section id="specs" class="fe-sec">
+        <span class="fe-lbl reveal-on-scroll">Hardware Specifications</span>
+        <h2 class="fe-title reveal-on-scroll">Detailed Technical <span class="fe-grad">Capabilities</span></h2>
+        <div class="fe-spec reveal-on-scroll" style="margin-top:44px"><div><div class="fe-row"><span>Power Backup</span><b>Up to 12 Hours</b></div><div class="fe-row"><span>Ingress Protection</span><b>IP 65</b></div><div class="fe-row"><span>Digital ID Verification</span><b>UIDAI's OKYC services</b></div><div class="fe-row"><span>Backward Integration API</span><b>Included</b></div></div><div><div class="fe-row"><span>Metal Enclosure</span><b>Digital Lock</b></div><div class="fe-row"><span>Communication</span><b>TCP/IP, WiFi, GSM</b></div><div class="fe-row"><span>Real-time Attendance Logs</span><b>Included</b></div><div class="fe-row"><span>Hardware Warranty</span><b>1 Year</b></div></div></div>
+    </section>
+    </main>
+
+<footer id="contact" class="site-footer relative z-10 w-full mt-8 border-t border-cyan-500/30 bg-[#010d14]/90 backdrop-blur-xl">
+    <div class="laser-divider"></div>
+
+    <div class="max-w-[1280px] mx-auto px-6 lg:px-14 pt-14 pb-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-10">
+
+            <!-- Brand -->
+            <div class="reveal-on-scroll lg:col-span-4 space-y-5">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl border-2 border-cyan-400 bg-cyan-950/40 flex items-center justify-center font-black text-cyan-400 text-lg shadow-lg shadow-cyan-500/20">FIS</div>
+                    <div class="flex flex-col">
+                        <span class="footer-brand text-lg font-black tracking-wider text-white leading-none">Fi-Tech <span class="text-cyan-400 font-bold">IT</span></span>
+                        <span class="text-[10px] text-gray-400 tracking-[0.25em] uppercase font-semibold mt-0.5">SOLUTIONS</span>
+                    </div>
+                </div>
+                <p class="text-gray-400 text-sm leading-relaxed max-w-sm">
+                    Robust software, precision biometrics, cloud systems and real estate digital engines for global enterprises and government.
+                </p>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="reveal-on-scroll lg:col-span-2 space-y-4" style="transition-delay:120ms;">
+                <h4 class="footer-heading text-xs font-extrabold tracking-[0.2em] uppercase text-white">Quick Links</h4>
+                <ul class="space-y-2.5 text-sm text-gray-400">
+                    <li><a href="index.html#home" class="footer-link hover:text-cyan-400 transition-colors">Home</a></li>
+                    <li><a href="index.html#about" class="footer-link hover:text-cyan-400 transition-colors">About</a></li>
+                    <li><a href="index.html#services" class="footer-link hover:text-cyan-400 transition-colors">Services</a></li>
+                    <li><a href="#feTop" class="footer-link hover:text-cyan-400 transition-colors">Products</a></li>
+                    <li><a href="index.html#portfolio" class="footer-link hover:text-cyan-400 transition-colors">Portfolio</a></li>
+                    <li><a href="#contact" class="footer-link hover:text-cyan-400 transition-colors">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Services -->
+            <div class="reveal-on-scroll lg:col-span-3 space-y-4" style="transition-delay:240ms;">
+                <h4 class="footer-heading text-xs font-extrabold tracking-[0.2em] uppercase text-white">Services</h4>
+                <ul class="space-y-2.5 text-sm text-gray-400">
+                    <li><a href="index.html#services" class="footer-link hover:text-cyan-400 transition-colors">Custom Software Development</a></li>
+                    <li><a href="index.html#services" class="footer-link hover:text-cyan-400 transition-colors">Web &amp; Mobile App Development</a></li>
+                    <li><a href="index.html#services" class="footer-link hover:text-cyan-400 transition-colors">UI/UX Design</a></li>
+                    <li><a href="index.html#services" class="footer-link hover:text-cyan-400 transition-colors">E-commerce Solutions</a></li>
+                    <li><a href="index.html#services" class="footer-link hover:text-cyan-400 transition-colors">Cloud &amp; DevOps</a></li>
+                    <li><a href="index.html#services" class="footer-link hover:text-cyan-400 transition-colors">IT Consulting &amp; Support</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact -->
+            <div class="reveal-on-scroll lg:col-span-3 space-y-4" style="transition-delay:360ms;">
+                <h4 class="footer-heading text-xs font-extrabold tracking-[0.2em] uppercase text-white">Contact</h4>
+                <ul class="space-y-3 text-sm text-gray-400">
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-location-dot text-cyan-400 mt-1"></i><span>505/506 Sai Integrate, Beside Marigold Banquet Bavdhan, Pune - 411021</span></li>
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-envelope text-cyan-400 mt-1"></i><a href="mailto:info@fitechit.com" class="footer-link hover:text-cyan-400 transition-colors">info@fitechit.com</a></li>
+                    <li class="flex items-start gap-3"><i class="fa-solid fa-phone text-cyan-400 mt-1"></i><span class="flex flex-wrap gap-x-3"><a href="tel:+919370959455" class="footer-link hover:text-cyan-400 transition-colors">+91 9370959455</a><a href="tel:+918459497965" class="footer-link hover:text-cyan-400 transition-colors">+91 8459497965</a></span></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Bottom bar -->
+        <div class="reveal-on-scroll mt-12 pt-6 border-t border-cyan-950/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-500">
+            <p>&copy; <span id="footerYear">2026</span> Fi-Tech IT Solutions. All rights reserved.</p>
+            <div class="flex items-center gap-5">
+                <a href="privacy-policy.html" class="footer-link hover:text-cyan-400 transition-colors">Privacy Policy</a>
+                <a href="terms-of-service.html" class="footer-link hover:text-cyan-400 transition-colors">Terms of Service</a>
+                <a href="index.html#home" class="w-8 h-8 rounded-full border border-cyan-500/30 text-cyan-400 flex items-center justify-center hover:bg-cyan-400 hover:text-[#02090d] transition-all" aria-label="Back to top"><i class="fa-solid fa-arrow-up text-xs"></i></a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="js/faceex.js"></script>
+    <script src="js/legal-modal.js"></script>
+</body>
+</html>
